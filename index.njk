@@ -1,0 +1,40 @@
+---
+layout: layout.njk
+title: "Home"
+---
+
+<section class="flex flex-col sm:flex-row items-center mb-8 space-y-4 sm:space-y-0 sm:space-x-4">
+  <img
+    src="https://www.gravatar.com/avatar/f69faa2d58c63710b6ce0c9172d8d527?s=350"
+    alt="My face. The coordination between my hoodie and the blog theme is purely coincidental"
+    class="rounded-full border-2 border-white shadow-md w-1/4 flex-shrink-0"
+  />
+  <div class="prose prose-orange dark:prose-dark">
+    <h1>Hi. I'm Matt.</h1>
+    <p>
+      I'm a software developer based in the UK. I work on projects in
+      <a href="https://www.php.net">PHP</a> (particularly <a href="https://laravel.com">Laravel</a>),
+      <a href="https://go.dev">Go</a>, <a href="https://www.typescriptlang.org/">TypeScript</a>,
+      <a href="https://vuejs.org">Vue</a> and <a href="https://tailwindcss.com">Tailwind</a>.
+    </p>
+    <p>
+      If you want to contact me,
+      <a href="https://cyberplace.social/@barlow">toot me on Mastodon</a>.
+    </p>
+  </div>
+</section>
+
+<section class="prose prose-orange dark:prose-dark mt-8 sm:mt-12">
+  <h1>Blog posts</h1>
+
+  {% for group, posts in collections.post | reverse | groupbyyearmonth %}
+  <h3>{{ group }}</h3>
+  <ul>
+    {% for post in posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+</section>

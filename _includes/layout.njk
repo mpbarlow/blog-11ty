@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="barlow.dev" />
+    <meta property="og:url" content="{{ siteurl }}{{ page.url }}" />
+    <meta property="og:title" content="{{ title }} - barlow.dev" />
+    <meta property="og:type" content="blog" />
+    {% if description %}
+    <meta property="og:description" content="{{ description }}" />
+    <meta name="description" content="{{ description }}" />
+    {% endif %}
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/prism-one-light.css" />
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link rel="canonical" href="{{ siteurl }}{{ page.url }}">
+
+    <title>{{ title }} - barlow.dev</title>
+  </head>
+
+  <body class="max-w-prose mx-auto dark:bg-gray-800 px-4 md:px-0">
+    <nav class="my-6 flex items-center space-x-6 sm:space-x-12">
+      <a href="{{ '/' | url }}" title="Home">
+        <span class="font-mono text-orange-500 hover:text-orange-600">[barlow.dev ~] $</span>
+      </a>
+    </nav>
+
+    <main class="my-6">{{ content | safe }}</main>
+
+    <footer class="my-12 text-xs text-gray-700 dark:text-gray-400 text-center">
+      <span class="block my-8 text-gray-400">— ~ —</span>
+      <nav class="flex items-center justify-around w-full">
+        {% include "mastodon_link.html" %}
+        {% include "instagram_link.html" %}
+        {% include "github_link.html" %}
+      </nav>
+      <p class="mt-8">&copy; {{ currentyear | asromannumerals }} Matt Barlow</p>
+    </footer>
+  </body>
+</html>
