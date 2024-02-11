@@ -6,6 +6,7 @@ post_tags:
   - web development
   - laravel
   - php
+  - programming
 ---
 
 Back in January [I opened a small pull request to the Laravel framework](https://github.com/laravel/framework/pull/31102) to enable query-time casting of Eloquent attributes. Laravel already allowed static casting, where an array `$casts` could be defined on a model, containing key-value pairs of attributes and the data type they should be automatically cast to. This is a very nice quality-of-life feature for things like dates or JSON columns, allowing you to transparently map flat data to rich objects.

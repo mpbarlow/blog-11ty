@@ -1,0 +1,16 @@
+---
+layout: layout.njk
+title: "Tags"
+---
+
+<section class="prose prose-orange dark:prose-dark">
+  <h1>Tags</h1>
+
+  <ul>
+  {% for tag in collections.post | extracttags | sort %}
+    <li>
+      <a href="/tag/{{ tag | slug }}/">{{ tag }}</a> ({{ collections.post | filterbytag(tag) | length }})
+    </li>
+  {% endfor %}
+  </ul>
+</section>

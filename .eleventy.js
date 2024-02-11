@@ -9,8 +9,8 @@ const formatDateString = (value, format) => {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
 
-  eleventyConfig.addPassthroughCopy("img");
-  eleventyConfig.addPassthroughCopy("prism-one-light.css");
+  eleventyConfig.addPassthroughCopy("src/img");
+  eleventyConfig.addPassthroughCopy("src/prism-one-light.css");
 
   eleventyConfig.addGlobalData("currentyear", new Date().getFullYear());
   eleventyConfig.addGlobalData("siteurl", "https://barlow.dev");
@@ -35,6 +35,8 @@ module.exports = function (eleventyConfig) {
 
   // Filter a collection of posts by those that include the specified tag
   eleventyConfig.addFilter("filterbytag", (posts, tag) => posts.filter((post) => post.data.post_tags.includes(tag)));
+
+  eleventyConfig.addFilter("extracttags", (posts) => [...new Set(posts.map((post) => post.data.post_tags).flat())]);
 
   // Format a Y-m-d date into the format displayed on posts, e.g. "1 Jan 2024"
   eleventyConfig.addFilter("postdate", (ymd) =>
@@ -83,4 +85,10 @@ module.exports = function (eleventyConfig) {
 
     return output;
   });
+
+  return {
+    dir: {
+      input: "src",
+    },
+  };
 };

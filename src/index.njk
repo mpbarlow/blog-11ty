@@ -25,7 +25,7 @@ title: "Home"
 </section>
 
 <section class="prose prose-orange dark:prose-dark mt-8 sm:mt-12">
-  <h1>Blog posts</h1>
+  <h1>Newest posts</h1>
 
   {% for group, posts in collections.post | reverse | groupbyyearmonth %}
   <h3>{{ group }}</h3>
@@ -37,4 +37,6 @@ title: "Home"
     {% endfor %}
   </ul>
   {% endfor %}
+
+  <a href="/posts/">All posts</a> &bull; <a href="/tags/">Tags</a>
 </section>
