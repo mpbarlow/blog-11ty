@@ -11,6 +11,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("src/img");
   eleventyConfig.addPassthroughCopy("src/prism-one-light.css");
+  eleventyConfig.addPassthroughCopy("src/prism-gruvbox-dark.css");
 
   eleventyConfig.addGlobalData("currentyear", new Date().getFullYear());
   eleventyConfig.addGlobalData("siteurl", "https://barlow.dev");

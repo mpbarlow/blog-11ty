@@ -4,7 +4,9 @@
   "scripts": {
     "build": "rm -r ./_site && npm run prettier && npm run tailwind && npx @11ty/eleventy",
     "prettier": "npx prettier **/*.{js,json,html,md} -w",
-    "tailwind": "tailwindcss -i ./src/style.css -o ./_site/style.css"
+    "serve": "npx @11ty/eleventy --serve",
+    "tailwind": "tailwindcss -i ./src/style.css -o ./_site/style.css",
+    "tailwind:watch": "tailwindcss -i ./src/style.css -o ./_site/style.css --watch"
   },
   "keywords": [],
   "author": "",

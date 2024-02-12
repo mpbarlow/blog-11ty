@@ -1,11 +1,11 @@
 ---
 layout: layout.njk
-permalink: "tag/{{ tag | slug }}/index.html"
+permalink: "tags/{{ tag | slug }}/index.html"
 eleventyComputed:
   title: "Posts tagged '{{ tag }}'"
 ---
 
-<section class="prose prose-orange dark:prose-dark">
+<section class="prose prose-orange dark:prose-invert">
   <h1>Posts tagged '{{ tag }}'</h1>
 
   {% for group, posts in collections.post | filterbytag(tag) | reverse | groupbyyearmonth %}

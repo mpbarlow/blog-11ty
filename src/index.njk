@@ -9,7 +9,7 @@ title: "Home"
     alt="My face. The coordination between my hoodie and the blog theme is purely coincidental"
     class="rounded-full border-2 border-white shadow-md w-1/4 flex-shrink-0"
   />
-  <div class="prose prose-orange dark:prose-dark">
+  <div class="prose prose-orange dark:prose-invert">
     <h1>Hi. I'm Matt.</h1>
     <p>
       I'm a software developer based in the UK. I work on projects in
@@ -24,7 +24,7 @@ title: "Home"
   </div>
 </section>
 
-<section class="prose prose-orange dark:prose-dark mt-8 sm:mt-12">
+<section class="prose prose-orange dark:prose-invert mt-8 sm:mt-12">
   <h1>Newest posts</h1>
 
   {% for group, posts in collections.post | reverse | groupbyyearmonth %}
@@ -38,5 +38,5 @@ title: "Home"
   </ul>
   {% endfor %}
 
-  <a href="/posts/">All posts</a> &bull; <a href="/tags/">Tags</a>
+  <a href="/posts/">All posts</a> &bull; <a href="/tags/">By tag</a>
 </section>

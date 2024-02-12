@@ -3,7 +3,7 @@ layout: layout.njk
 ---
 
 <article>
-  <section class="prose dark:prose-dark">
+  <section class="prose dark:prose-invert">
     <h1>{{ title }}</h1>
     {% if description %}
     <h4>{{ description }}</h4>
@@ -16,7 +16,7 @@ layout: layout.njk
     <div class="flex space-x-1 text-xs mt-2">
       {% for tag in post_tags | sort %}
       <a
-        href="/tag/{{ tag | slug }}/"
+        href="/tags/{{ tag | slug }}/"
         title="See all posts tagged '{{ tag }}'"
         class="rounded-lg px-2 py-1 border border-gray-500 text-gray-500 hover:border-orange-500 hover:text-orange-500 dark:border-gray-400 dark:text-gray-400"
       >{{ tag }}</a>
@@ -24,5 +24,5 @@ layout: layout.njk
     </div>
   </aside>
 
-  <section class="prose prose-orange dark:prose-dark">{{ content | safe }}</section>
+  <section class="prose prose-orange dark:prose-invert">{{ content | safe }}</section>
 </article>

@@ -3,7 +3,7 @@ layout: layout.njk
 title: "All posts"
 ---
 
-<section class="prose prose-orange dark:prose-dark">
+<section class="prose prose-orange dark:prose-invert">
   <h1>All posts</h1>
 
   {% for group, posts in collections.post | reverse | groupbyyearmonth %}
