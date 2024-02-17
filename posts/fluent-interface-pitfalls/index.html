@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <!-- Feels like these should be CSS properties but okay -->
+    <meta name="theme-color" content="rgb(243, 244, 246)" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="rgb(55, 65, 81)" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="barlow.dev" />
+    <meta property="og:url" content="https://barlow.dev/posts/fluent-interface-pitfalls/" />
+    <meta property="og:title" content="Fluent interface pitfalls - barlow.dev" />
+    <meta property="og:type" content="blog" />
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/prism-one-light.css" />
+    <link rel="stylesheet" href="/css/prism-material-oceanic.css" />
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link rel="canonical" href="https://barlow.dev/posts/fluent-interface-pitfalls/" />
+    <link rel="alternate" type="application/atom+xml" href="https://barlow.dev/feed.xml" title="RSS Feed" />
+
+    <title>Fluent interface pitfalls - barlow.dev</title>
+  </head>
+
+  <body class="flex min-h-dvh flex-col items-stretch dark:bg-gray-800">
+    <div>
+      <nav
+        class="mx-auto mt-4 flex max-w-prose items-center justify-between px-safe-offset-4 dark:prose-invert md:px-0"
+      >
+        <a href="/" title="Home">
+          <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
+        </a>
+        <div class="space-x-2">
+          <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
+          <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
+          <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
+        </div>
+      </nav>
+    </div>
+
+    <main class="mb-12 mt-8 flex-grow"><article>
+  <section class="relative">
+    <div class="prose mx-auto max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
+      <h1>Fluent interface pitfalls</h1>
+      
+
+      <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
+        <p>6 minute read &bull; 8th Feb 2024</p>
+
+        <div class="relative flex flex-wrap text-xs">
+          
+          <a
+            href="/tags/fp/"
+            title="See all posts tagged 'fp'"
+            class="mr-1 mt-2 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+            >fp</a
+          >
+          
+          <a
+            href="/tags/oop/"
+            title="See all posts tagged 'oop'"
+            class="mr-1 mt-2 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+            >oop</a
+          >
+          
+          <a
+            href="/tags/php/"
+            title="See all posts tagged 'php'"
+            class="mr-1 mt-2 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+            >php</a
+          >
+          
+          <a
+            href="/tags/programming/"
+            title="See all posts tagged 'programming'"
+            class="mr-1 mt-2 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+            >programming</a
+          >
+          
+          <a
+            href="/tags/testing/"
+            title="See all posts tagged 'testing'"
+            class="mr-1 mt-2 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+            >testing</a
+          >
+          
+        </div>
+      </aside>
+    </div>
+
+    
+<div
+  class="bottom-[-15px] absolute inset-x-0 -z-10 h-[1000px] origin-bottom -skew-y-2 bg-gray-100 dark:bg-gray-700"
+></div>
+
+  </section>
+
+  <section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
+    <h2>Background</h2>
+<p>Fluent interfaces are very common in the PHP world, as well as many other object-oriented languages. They can provide a very nice way to interface with classes, but they’re often misused—completely accidentally.</p>
+<p>For those not familiar with the term, it’s literally just when methods on an object return the object itself (or, more rarely, a copy) to support method chaining. Configuration is performed in steps, forming a pseudo-DSL that reads nicely and has the potential to be very flexible. It also looks slick, which shouldn’t be a factor, but I think often is.</p>
+<p>Here’s an example. This class performs a file upload to some abstracted filesystem (for example a local disk or S3), with optional logging. Realistically, you probably wouldn’t need a dedicated class for this, but let’s imagine there’s enough additional business logic required that would warrant it.</p>
+<pre class="language-php"><code class="language-php"><span class="token keyword">class</span> <span class="token class-name-definition class-name">Uploader</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token operator">?</span><span class="token class-name type-declaration">LoggerInterface</span> <span class="token variable">$logger</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token class-name type-declaration">FilesystemInterface</span> <span class="token variable">$disk</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">withLogging</span><span class="token punctuation">(</span><span class="token class-name type-declaration">LoggerInterface</span> <span class="token variable">$logger</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">static</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">logger</span> <span class="token operator">=</span> <span class="token variable">$logger</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">toDisk</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FilesystemInterface</span> <span class="token variable">$disk</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">static</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">disk</span> <span class="token operator">=</span> <span class="token variable">$disk</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">upload</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$filename</span><span class="token punctuation">,</span> <span class="token keyword type-hint">string</span> <span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">static</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">logger</span><span class="token operator">?-></span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Uploading <span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$filename</span><span class="token punctuation">}</span></span>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Perform some business logic...</span>
+
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">disk</span><span class="token operator">-></span><span class="token function">put</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">,</span> <span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">logger</span><span class="token operator">?-></span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Uploaded <span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$filename</span><span class="token punctuation">}</span></span>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Uploader</span><span class="token punctuation">)</span>
+    <span class="token operator">-></span><span class="token function">withLogging</span><span class="token punctuation">(</span><span class="token variable">$logger</span><span class="token punctuation">)</span>
+    <span class="token operator">-></span><span class="token function">toDisk</span><span class="token punctuation">(</span><span class="token variable">$disk</span><span class="token punctuation">)</span>
+    <span class="token operator">-></span><span class="token function">upload</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"hello.txt"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"Hello, world!"</span><span class="token punctuation">)</span>
+    <span class="token operator">-></span><span class="token function">upload</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"howdy.txt"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"Me again"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>At first glance this is pretty nice. It reads imperatively, which makes it very simple to understand, and because the configuration is done in stages, it would be easy to wrap parts in conditionals to set things up a little differently if we need to. We can also chain as many files as we like.</p>
+<p>It’s a somewhat contrived example, but it’s a common pattern you are likely to see in real codebases. We have a problem though.</p>
+<h2>Partial construction</h2>
+<p>We have correctly modelled the fact that logging is optional by making <code>$logger</code> nullable and by using the null-safe operator when attempting to call methods on it. If the consumer of our class has no interest in logging, they need not even be aware that the class is capable of it.</p>
+<p>However, the <em>raison d’être</em> of this class is to write a file to a disk. The disk is a mandatory dependency; calling <code>upload()</code> without one set is nonsense, and will quite rightly crash if you try. But, in the way this is modelled, it isn’t mandatory at all: the object is in an invalid, incomplete state until the moment the consumer calls <code>toDisk()</code>.</p>
+<p>You could add a check to throw an exception up-front if no disk is set, but this solves almost nothing—the consumer is still forced to understand implementation details of the class in order to use it, making it quite the leaky abstraction.</p>
+<p>One of the most powerful ways to reduce both runtime bugs and “code-time” mental load is to <a href="https://kevinmahoney.co.uk/articles/my-principles-for-building-software/#make-invalid-states-unrepresentable">make invalid states unrepresentable</a>. Put simply, this is where you make nonsense situations like the above impossible, such that you don’t need to worry about guarding against them. It’s not always easy with the runtime-only nature of PHP’s type system, but by putting some thought into the design of your classes, you can almost always avoid it.</p>
+<p>The fix here is really simple: scrap <code>toDisk()</code>, and make <code>$disk</code> a non-nullable parameter to <code>Uploader</code>’s constructor. Not only does this make the dependency between <code>Uploader</code> and <code>FilesystemInterface</code> crystal clear to consumers, but it also makes it impossible to even instantiate the class without everything it needs to perform its functions.</p>
+<p>If your class has multiple methods that each require different dependencies, you might instead opt to pass them to the individual methods. This ultimately has the same effect, though more than a couple and it’s worth asking yourself if the class has too many concerns and should be broken up.</p>
+<p>The key point here is that fluent interfaces should only be used for configuration, not construction. If your code can’t work without it, it shouldn’t be possible to <em>not</em> provide it.</p>
+<p>Even classes that take method chaining to an extreme can be designed in such a way that the object is never left in an invalid state. For example, you can call <code>get()</code> on a completely naked <a href="https://laravel.com/docs/10.x/queries">Eloquent query builder</a>, and the result is perfectly valid and logical (it just runs a <code>SELECT * FROM &lt;table&gt;</code>).</p>
+<h2>Digital Febreeze</h2>
+<p>Another case where fluent interfaces can cause unintended problems is their ability to hide code smells, particularly for methods with too many responsibilities.</p>
+<pre class="language-php"><code class="language-php"><span class="token keyword">class</span> <span class="token class-name-definition class-name">Example</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">amendAccount</span><span class="token punctuation">(</span>
+        <span class="token keyword type-hint">string</span> <span class="token variable">$accountRef</span><span class="token punctuation">,</span>
+        <span class="token keyword type-hint">int</span> <span class="token variable">$amount</span><span class="token punctuation">,</span>
+        <span class="token keyword type-hint">bool</span> <span class="token variable">$recalculateBefore</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">,</span>
+        <span class="token keyword type-hint">bool</span> <span class="token variable">$notifyHolders</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">,</span>
+        <span class="token operator">?</span><span class="token class-name type-declaration">LoggerInterface</span> <span class="token variable">$logger</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">,</span>
+        <span class="token operator">?</span><span class="token class-name type-declaration">AccountService</span> <span class="token variable">$overrideHandler</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">,</span>
+        <span class="token operator">?</span><span class="token class-name type-declaration">MailerInterface</span> <span class="token variable">$mailer</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span> <span class="token punctuation">{</span>
+        <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Example</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">amendAccount</span><span class="token punctuation">(</span>
+    <span class="token string double-quoted-string">"northlight"</span><span class="token punctuation">,</span>
+    <span class="token number">42</span><span class="token punctuation">,</span>
+    <span class="token constant">null</span><span class="token punctuation">,</span>
+    <span class="token constant">null</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">Logger</span><span class="token punctuation">,</span>
+    <span class="token constant">null</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">Mailer</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>It’s context-dependent of course, but seeing something like the code above is quite likely to set off your developer-spidey-sense right away. Seven parameters, lots of flags and overrides, and a bunch of them are optional? That has all the hallmarks of a method that’s had tons of stuff bolted onto it, and has come to do far too much over time.</p>
+<p>But would you raise an eyebrow seeing this instead?</p>
+<pre class="language-php"><code class="language-php"><span class="token keyword">class</span> <span class="token class-name-definition class-name">Example</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">withLogging</span><span class="token punctuation">(</span><span class="token class-name type-declaration">LoggerInterface</span> <span class="token variable">$logger</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">static</span>
+    <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+
+    <span class="token comment">// More setters for each optional parameter...</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">amendAccount</span><span class="token punctuation">(</span>
+        <span class="token keyword type-hint">string</span> <span class="token variable">$accountRef</span><span class="token punctuation">,</span>
+        <span class="token keyword type-hint">int</span> <span class="token variable">$amount</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Example</span><span class="token punctuation">)</span>
+    <span class="token operator">-></span><span class="token function">withLogging</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Logger</span><span class="token punctuation">)</span>
+    <span class="token operator">-></span><span class="token function">sendMailVia</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Mailer</span><span class="token punctuation">)</span>
+    <span class="token operator">-></span><span class="token function">amendAccount</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"northlight"</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>I’m not sure I would unless I had a reason to dig into the implementation. There are hints—for example exposing tons of setter methods of questionable relevance—but it’s far less obvious because the optional dependencies are omitted implicitly.</p>
+<p>And yet, there is no difference! Plus or minus a few cases of <code>$this</code>, the implementation of <code>amendAccount()</code> could be identical between both examples. We have not addressed the source of the smell; we’ve just masked it with something superficially more pleasant.</p>
+<p>Unlike the previous point, I don’t think there’s an easy rule to follow here. After all, the main benefit of fluent interfaces is make configuration less onerous and more legible. However, I think it goes to show that adding a fluent interface is something that should be carefully considered, because they can easily mask <a href="http://worrydream.com/refs/Brooks-NoSilverBullet.pdf">accidental complexity</a>—especially as a unit of code grows over time.</p>
+<h2>Testing</h2>
+<p>Testing a class that uses a fluent interface isn’t so bad; testing a class whose <em>dependencies</em> use fluent interfaces is a pain in the arse.</p>
+<p>This is because you have to mock out the expectations for each individual method in the chain. Not only does this add extra boilerplate, but such expectations are typically more brittle because the nature and order of configuration methods are far more likely to change than the final call to the method that actually does something.</p>
+<p>There are some quality-of-life options such as <a href="https://docs.mockery.io/en/latest/reference/demeter_chains.html">Mockery’s support for chained expectations</a>, but string-typing is never good (they’re unlikely to be picked up by any IDE refactoring you might do, for a start) and they’re still subject to brittleness around ordering.</p>
+<h2>The state of things</h2>
+<p>It’s not something you see discussed all that much because it’s a functional concern about an extremely object-oriented design pattern, but fluent interfaces also tend to lead to a lot of mutable state. Typically each call in the chain will modify the object in place before returning it. It doesn’t <em>have</em> to work this way—in the first example above, you could return a brand new <code>Uploader</code> with a logger set, then a further new instance with both the logger and the disk set—but this is not often done and, in languages like PHP where immutability is not a core feature, can be awkward and costly to performance.</p>
+<p>At a theory level, the problem with mutable state is the explosion of possible combinations your code can be in as more and more moving pieces are added—I think it’s safe to say we’ve all had <a href="https://www.youtube.com/watch?v=1NBfZcNU4O0">Pepe Silvia</a> moments trying to work out the exact sequence of events that caused a bug we didn’t think was possible.</p>
+<p>At a practical level, it means you have to be incredibly careful when passing around and reusing highly stateful objects, because changes you make in one place will carry through to subsequent calls. If you write PHP, how many times have you accidentally mutated a regular <code>DateTime</code> when trying to create a new date relative to an existing one? More than once I bet!</p>
+<p>As I said, I’m probably barking up the wrong tree; object-oriented languages are not functional languages and nor should they be. But it’s a valid concern, and one I think fluent interfaces can exacerbate.</p>
+<p>Fluent interfaces are not inherently bad, and when the DSL they form closely matches the natural model of a problem (query builders!) they can be very pleasant to work with. But, as with many things in the OOP world, it’s important to be aware of the pitfalls when considering their use.</p>
+
+  </section>
+</article>
+</main>
+
+    <footer class="relative pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
+      <nav class="mx-auto flex max-w-prose items-center justify-around">
+        <a
+  rel="me"
+  href="https://cyberplace.social/@barlow"
+  target="_blank"
+  title="Toot me on Mastodon"
+  class="hover:text-indigo-500 group flex flex-col"
+>
+  <img
+    src="/img/mastodon.png"
+    srcset="/img/mastodon_2x.png 2x, /img/mastodon_3x.png 3x"
+    alt="A pixel art elephant bearing the Mastodon logo"
+    class="h-[64px] w-[64px] group-hover:hidden"
+  />
+  <img
+    src="/img/mastodon_selected.png"
+    srcset="/img/mastodon_selected_2x.png 2x, /img/mastodon_selected_3x.png 3x"
+    alt="A pixel art elephant bearing the Mastodon logo"
+    class="hidden h-[64px] w-[64px] group-hover:inline"
+  />
+  <span class="mt-1">Mastodon</span>
+</a>
+ <a
+  href="https://www.instagram.com/mattpbarlow"
+  target="_blank"
+  title="Dog pix"
+  class="hover:text-indigo-500 group flex flex-col"
+>
+  <img
+    src="/img/instagram.png"
+    srcset="/img/instagram_2x.png 2x, /img/instagram_3x.png 3x"
+    alt="A pixel art iPhone taking a photo of the Instagram logo"
+    class="h-[64px] w-[64px] group-hover:hidden"
+  />
+  <img
+    src="/img/instagram_selected.png"
+    srcset="/img/instagram_selected_2x.png 2x, /img/instagram_selected_3x.png 3x"
+    alt="A pixel art iPhone taking a photo of the Instagram logo"
+    class="hidden h-[64px] w-[64px] group-hover:inline"
+  />
+  <span class="mt-1">Instagram</span>
+</a>
+ <a
+  href="https://github.com/mpbarlow"
+  target="_blank"
+  title="Fork me on GitHub"
+  class="hover:text-indigo-500 group flex flex-col"
+>
+  <img
+    src="/img/github.png"
+    srcset="/img/github_2x.png 2x, /img/github_3x.png 3x"
+    alt="A pixel art MacBook displaying the Git logo"
+    class="h-[64px] w-[64px] group-hover:hidden"
+  />
+  <img
+    src="/img/github_selected.png"
+    srcset="/img/github_selected_2x.png 2x, /img/github_selected_3x.png 3x"
+    alt="A pixel art MacBook displaying the Git logo"
+    class="hidden h-[64px] w-[64px] group-hover:inline"
+  />
+  <span class="mt-1">GitHub</span>
+</a>
+
+      </nav>
+      <p class="mt-8">&copy; MMXXIV Matt Barlow</p>
+      <!-- CSS is misery and you cannot convince me otherwise -->
+      <div class="absolute inset-x-0 bottom-0 -z-10 h-[1000px] overflow-hidden">
+        <div class="absolute bottom-[-870px] h-[1000px] w-full -skew-y-2 bg-gray-100 dark:bg-gray-700"></div>
+      </div>
+    </footer>
+  </body>
+</html>

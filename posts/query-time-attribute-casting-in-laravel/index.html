@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <!-- Feels like these should be CSS properties but okay -->
+    <meta name="theme-color" content="rgb(243, 244, 246)" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="rgb(55, 65, 81)" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="barlow.dev" />
+    <meta property="og:url" content="https://barlow.dev/posts/query-time-attribute-casting-in-laravel/" />
+    <meta property="og:title" content="Query-time Attribute Casting in Laravel - barlow.dev" />
+    <meta property="og:type" content="blog" />
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/prism-one-light.css" />
+    <link rel="stylesheet" href="/css/prism-material-oceanic.css" />
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link rel="canonical" href="https://barlow.dev/posts/query-time-attribute-casting-in-laravel/" />
+    <link rel="alternate" type="application/atom+xml" href="https://barlow.dev/feed.xml" title="RSS Feed" />
+
+    <title>Query-time Attribute Casting in Laravel - barlow.dev</title>
+  </head>
+
+  <body class="flex min-h-dvh flex-col items-stretch dark:bg-gray-800">
+    <div>
+      <nav
+        class="mx-auto mt-4 flex max-w-prose items-center justify-between px-safe-offset-4 dark:prose-invert md:px-0"
+      >
+        <a href="/" title="Home">
+          <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
+        </a>
+        <div class="space-x-2">
+          <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
+          <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
+          <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
+        </div>
+      </nav>
+    </div>
+
+    <main class="mb-12 mt-8 flex-grow"><article>
+  <section class="relative">
+    <div class="prose mx-auto max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
+      <h1>Query-time Attribute Casting in Laravel</h1>
+      
+
+      <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
+        <p>4 minute read &bull; 31st May 2020</p>
+
+        <div class="relative flex flex-wrap text-xs">
+          
+          <a
+            href="/tags/eloquent/"
+            title="See all posts tagged 'eloquent'"
+            class="mr-1 mt-2 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+            >eloquent</a
+          >
+          
+          <a
+            href="/tags/laravel/"
+            title="See all posts tagged 'laravel'"
+            class="mr-1 mt-2 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+            >laravel</a
+          >
+          
+          <a
+            href="/tags/php/"
+            title="See all posts tagged 'php'"
+            class="mr-1 mt-2 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+            >php</a
+          >
+          
+          <a
+            href="/tags/programming/"
+            title="See all posts tagged 'programming'"
+            class="mr-1 mt-2 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+            >programming</a
+          >
+          
+          <a
+            href="/tags/web-development/"
+            title="See all posts tagged 'web development'"
+            class="mr-1 mt-2 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+            >web development</a
+          >
+          
+        </div>
+      </aside>
+    </div>
+
+    
+<div
+  class="bottom-[-15px] absolute inset-x-0 -z-10 h-[1000px] origin-bottom -skew-y-2 bg-gray-100 dark:bg-gray-700"
+></div>
+
+  </section>
+
+  <section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
+    <p>Back in January <a href="https://github.com/laravel/framework/pull/31102">I opened a small pull request to the Laravel framework</a> to enable query-time casting of Eloquent attributes. Laravel already allowed static casting, where an array <code>$casts</code> could be defined on a model, containing key-value pairs of attributes and the data type they should be automatically cast to. This is a very nice quality-of-life feature for things like dates or JSON columns, allowing you to transparently map flat data to rich objects.</p>
+<p>For Laravel 6, <a href="https://twitter.com/reinink">Jonathan Reinink</a> submitted some <a href="https://github.com/laravel/framework/pull/29567">very nice improvements</a> to subquery selects, which I eagerly adopted in both personal and work projects.</p>
+<h2>The problem</h2>
+<p>One small snag came to light though: while I could now use subqueries more easily than ever, the resulting values were always plain text. In one particular system I manage, a common type of query results in several dates, where the columns on the main table being queried are automatically cast to Carbon objects, while the columns selected from subqueries are plain text timestamps.</p>
+<p>While far from the end of the world, it was a pain to deal with:</p>
+<ul>
+<li>
+<p>You could &quot;just-in-time&quot; convert to a Carbon instance by hand, perhaps when the date is displayed. But creating a new instance inside a view feels wrong, and assigning it to a variable if the date is referenced multiple times is out of the question. Not to mention needing to remember which dates need to be manually cast and which don’t, or handing null values — yuck.</p>
+</li>
+<li>
+<p>Manually setting the attribute value to a Carbon instance immediately after the query feels like pointless busywork, especially if you have multiple values to convert, or similar queries in multiple places.</p>
+</li>
+<li>
+<p>Because of the way <code>$casts</code> works, you can actually add your dynamic columns even if they aren't present on the model the majority of the time, and it will work. This has a few problems though. For one, you're just asking for someone to refactor them away without realising their purpose — lets hope your tests catch it! Second, it's just plain messy. The <code>$casts</code> array itself is fine because it's globally applicable, but to mix in casts that are only relevant to one or two places in your entire app makes things hard to follow. Lastly, it's inflexible. While it's not likely to happen all that often, a single static list of casts does not allow you to re-define casts for specific queries, nor map the same derived column name to varying data types.</p>
+</li>
+</ul>
+<p>With this in mind, I set out to try to add a method to the Eloquent query builder allowing the user to specify additional or modified casts as part of the query, just like eager loading or fetching a related count. Such a feature must only affect the current query, must have no negative performance implications, and most importantly, must be succinct and easy to reason about. With the change affecting such a core part of the framework, a huge sprawling change would (quite rightly) be unlikely to be considered, especially from a first-time contributor.</p>
+<h2>The solution</h2>
+<p>As a testament to how easy Laravel is to work with, the feature was implemented in a grand total of <a href="https://github.com/laravel/framework/pull/31102/files">4 lines of code</a>, not counting the method definitions (for comparison, the corresponding tests outweigh the feature itself by about 4:1).</p>
+<p><code>$casts</code> itself is a protected property, so we can’t modify that directly. The solution here was to add a new public method to the <code>HasAttributes</code> trait, where the existing cast functionality is defined. The new <code>mergeCasts</code> method does as described; allows us to merge a given array of casts with any existing casts on the model. Thanks to how <code>array_merge</code> works, this allows us to replace existing casts and define any new ones at the same time.</p>
+<p>From there we can add a <code>withCasts</code> method to the query builder (named in line with <code>with</code>, <code>withCount</code>, etc.). This simply calls <code>mergeCasts</code> on the internal model instance every Eloquent query builder points to.</p>
+<p>Finally, for each record in the query result, the model’s <code>newInstance</code> method is called. This sets the raw attributes, as well as things like the database connection. Because attribute casting is not performed until <em>after</em> this step, we need to ensure that each new model instance uses our altered <code>$casts</code> array. So we call <code>mergeCasts</code> again (on the new instance this time) to keep everything inline with the casts set via the builder.</p>
+<p>And that’s all there is to it! The feature was merged in (my first open-source contribution!), and as of Laravel 7 you can specify any casts you like at the query level:</p>
+<pre class="language-php"><code class="language-php"><span class="token class-name static-context">User</span><span class="token operator">::</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token operator">-></span><span class="token function">select</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+        <span class="token string single-quoted-string">'users.*'</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">'last_posted_at'</span> <span class="token operator">=></span> <span class="token class-name static-context">Post</span><span class="token operator">::</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token operator">-></span><span class="token function">selectRaw</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'MAX(created_at)'</span><span class="token punctuation">)</span>
+            <span class="token operator">-></span><span class="token function">whereColumn</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'user_id'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'users.id'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token operator">-></span><span class="token function">withCasts</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'last_posted_at'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'date'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token operator">-></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>As an added bonus, because it just uses the cast functionality that already existed in the framework, it works nicely with the <a href="https://github.com/laravel/framework/pull/31035">custom cast types feature</a> that was also added in Laravel 7.</p>
+
+  </section>
+</article>
+</main>
+
+    <footer class="relative pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
+      <nav class="mx-auto flex max-w-prose items-center justify-around">
+        <a
+  rel="me"
+  href="https://cyberplace.social/@barlow"
+  target="_blank"
+  title="Toot me on Mastodon"
+  class="hover:text-indigo-500 group flex flex-col"
+>
+  <img
+    src="/img/mastodon.png"
+    srcset="/img/mastodon_2x.png 2x, /img/mastodon_3x.png 3x"
+    alt="A pixel art elephant bearing the Mastodon logo"
+    class="h-[64px] w-[64px] group-hover:hidden"
+  />
+  <img
+    src="/img/mastodon_selected.png"
+    srcset="/img/mastodon_selected_2x.png 2x, /img/mastodon_selected_3x.png 3x"
+    alt="A pixel art elephant bearing the Mastodon logo"
+    class="hidden h-[64px] w-[64px] group-hover:inline"
+  />
+  <span class="mt-1">Mastodon</span>
+</a>
+ <a
+  href="https://www.instagram.com/mattpbarlow"
+  target="_blank"
+  title="Dog pix"
+  class="hover:text-indigo-500 group flex flex-col"
+>
+  <img
+    src="/img/instagram.png"
+    srcset="/img/instagram_2x.png 2x, /img/instagram_3x.png 3x"
+    alt="A pixel art iPhone taking a photo of the Instagram logo"
+    class="h-[64px] w-[64px] group-hover:hidden"
+  />
+  <img
+    src="/img/instagram_selected.png"
+    srcset="/img/instagram_selected_2x.png 2x, /img/instagram_selected_3x.png 3x"
+    alt="A pixel art iPhone taking a photo of the Instagram logo"
+    class="hidden h-[64px] w-[64px] group-hover:inline"
+  />
+  <span class="mt-1">Instagram</span>
+</a>
+ <a
+  href="https://github.com/mpbarlow"
+  target="_blank"
+  title="Fork me on GitHub"
+  class="hover:text-indigo-500 group flex flex-col"
+>
+  <img
+    src="/img/github.png"
+    srcset="/img/github_2x.png 2x, /img/github_3x.png 3x"
+    alt="A pixel art MacBook displaying the Git logo"
+    class="h-[64px] w-[64px] group-hover:hidden"
+  />
+  <img
+    src="/img/github_selected.png"
+    srcset="/img/github_selected_2x.png 2x, /img/github_selected_3x.png 3x"
+    alt="A pixel art MacBook displaying the Git logo"
+    class="hidden h-[64px] w-[64px] group-hover:inline"
+  />
+  <span class="mt-1">GitHub</span>
+</a>
+
+      </nav>
+      <p class="mt-8">&copy; MMXXIV Matt Barlow</p>
+      <!-- CSS is misery and you cannot convince me otherwise -->
+      <div class="absolute inset-x-0 bottom-0 -z-10 h-[1000px] overflow-hidden">
+        <div class="absolute bottom-[-870px] h-[1000px] w-full -skew-y-2 bg-gray-100 dark:bg-gray-700"></div>
+      </div>
+    </footer>
+  </body>
+</html>
