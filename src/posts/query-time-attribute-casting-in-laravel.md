@@ -1,5 +1,5 @@
 ---
-date: "2020-05-31"
+date: "2020-05-31T15:10:00Z"
 title: "Query-time Attribute Casting in Laravel"
 post_tags:
   - eloquent

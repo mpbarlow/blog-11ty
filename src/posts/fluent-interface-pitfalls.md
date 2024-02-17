@@ -1,5 +1,5 @@
 ---
-date: "2024-02-08"
+date: "2024-02-08T21:34:46Z"
 title: "Fluent interface pitfalls"
 post_tags:
   - fp

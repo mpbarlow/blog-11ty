@@ -1,5 +1,5 @@
 ---
-date: "2024-01-30"
+date: "2024-01-30T21:48:34Z"
 title: "PHPUnit’s Data Providers are your friend"
 description: "An introduction to PHPUnit Data Providers and the benefits they…provide"
 post_tags:

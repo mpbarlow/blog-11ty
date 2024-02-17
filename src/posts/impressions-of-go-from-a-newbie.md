@@ -1,5 +1,5 @@
 ---
-date: "2024-01-27"
+date: "2024-01-27T22:52:49Z"
 title: "Impressions of Go, from a newbie"
 post_tags:
   - go

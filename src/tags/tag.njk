@@ -16,7 +16,7 @@ eleventyComputed:
 </div>
 
 <section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-  {% for group, posts in collections.post | filterbytag(tag) | reverse | groupbyyearmonth %}
+  {% for group, posts in collections.posts | filterByTag(tag) | reverse | groupByYearMonth %}
   <h3>{{ group }}</h3>
   <ul>
     {% for post in posts %}
