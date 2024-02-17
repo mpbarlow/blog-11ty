@@ -2,7 +2,8 @@
   "name": "blog",
   "version": "1.0.0",
   "scripts": {
-    "build": "rm -r ./_site && npm run prettier && npm run tailwind && npx @11ty/eleventy",
+    "build": "npm run tailwind && npx @11ty/eleventy",
+    "fresh": "([ -d ./_site ] && rm -r ./_site) && npm run prettier && npm run tailwind && npx @11ty/eleventy",
     "prettier": "npx prettier **/*.{js,json,html,md,njk} -w",
     "serve": "npx @11ty/eleventy --serve",
     "tailwind": "tailwindcss -i ./src/css/style.css -o ./_site/css/style.css",
