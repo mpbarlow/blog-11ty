@@ -1,4 +1,4 @@
-const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -6,29 +6,41 @@ module.exports = {
   content: ["./src/**/*.{html,njk}"],
   darkMode: "media",
   theme: {
-    colors: {
-      transparent: "transparent",
-      current: "currentColor",
-      black: colors.black,
-      white: colors.white,
-      gray: colors.stone,
-      orange: colors.orange,
-    },
     extend: {
+      fontFamily: {
+        mono: ['"MonaspaceNeon"', ...defaultTheme.fontFamily.mono],
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            a: {
+              fontWeight: theme("fontWeight.normal"),
+            },
+            code: {
+              fontWeight: theme("fontWeight.normal"),
+            },
             "code::before": {
               content: "",
             },
             "code::after": {
               content: "",
             },
-            code: {
-              fontWeight: theme("fontWeight.normal"),
-            },
             figcaption: {
               textAlign: "center",
+            },
+            h1: {
+              fontFamily: "InstrumentSerif",
+              fontWeight: theme("fontWeight.normal"),
+            },
+          },
+        },
+        indigo: {
+          css: {
+            "--tw-prose-code": theme("colors.indigo.500"),
+            "--tw-prose-links": theme("colors.indigo.500"),
+            "--tw-prose-invert-code": theme("colors.indigo.500"),
+            code: {
+              backgroundColor: theme("colors.indigo.50"),
             },
           },
         },
@@ -44,6 +56,8 @@ module.exports = {
         },
         invert: {
           css: {
+            "--tw-prose-invert-code": theme("colors.indigo.400"),
+            "--tw-prose-invert-links": theme("colors.indigo.400"),
             code: {
               backgroundColor: theme("colors.gray.700"),
             },
@@ -52,5 +66,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("tailwindcss-safe-area")],
 };

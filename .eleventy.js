@@ -1,5 +1,8 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
+const dayjs = require("dayjs");
+dayjs.extend(require("dayjs/plugin/advancedFormat"));
+
 const formatDateString = (value, format) => {
   const components = value.split("-");
 
@@ -9,20 +12,22 @@ const formatDateString = (value, format) => {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
 
+  eleventyConfig.addPassthroughCopy("src/font");
   eleventyConfig.addPassthroughCopy("src/img");
-  eleventyConfig.addPassthroughCopy("src/prism-one-light.css");
-  eleventyConfig.addPassthroughCopy("src/prism-gruvbox-dark.css");
+  eleventyConfig.addPassthroughCopy("src/css/prism-one-light.css");
+  eleventyConfig.addPassthroughCopy("src/css/prism-material-oceanic.css");
 
   eleventyConfig.addGlobalData("currentyear", new Date().getFullYear());
   eleventyConfig.addGlobalData("siteurl", "https://barlow.dev");
 
+  eleventyConfig.addFilter("recent", (posts) =>
+    posts.filter((post) => dayjs().diff(dayjs(post.data.date), "year") < 1),
+  );
+
   // Given an array of posts, group by their publish date in the form e.g. "January 2024"
   eleventyConfig.addFilter("groupbyyearmonth", (posts) =>
     posts.reduce((carry, current) => {
-      const group = formatDateString(current.data.date, {
-        month: "long",
-        year: "numeric",
-      });
+      const group = dayjs(current.data.date).format("MMMM YYYY");
 
       if (group in carry) {
         carry[group].push(current);
@@ -39,14 +44,8 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("extracttags", (posts) => [...new Set(posts.map((post) => post.data.post_tags).flat())]);
 
-  // Format a Y-m-d date into the format displayed on posts, e.g. "1 Jan 2024"
-  eleventyConfig.addFilter("postdate", (ymd) =>
-    formatDateString(ymd, {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    }),
-  );
+  // Format a Y-m-d date into the format displayed on posts, e.g. "1st Jan 2024"
+  eleventyConfig.addFilter("postdate", (ymd) => dayjs(ymd).format("Do MMM YYYY"));
 
   // Strip out code from page content for the purposes of estimating reading time
   eleventyConfig.addFilter("contentonly", (content) => content.replace(/<pre class=(.|\n)*?<\/pre>/gm, ""));
@@ -91,5 +90,6 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: "src",
     },
+    markdownTemplateEngine: "njk",
   };
 };

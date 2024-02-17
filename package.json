@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rm -r ./_site && npm run prettier && npm run tailwind && npx @11ty/eleventy",
-    "prettier": "npx prettier **/*.{js,json,html,md} -w",
+    "prettier": "npx prettier **/*.{js,json,html,md,njk} -w",
     "serve": "npx @11ty/eleventy --serve",
-    "tailwind": "tailwindcss -i ./src/style.css -o ./_site/style.css",
-    "tailwind:watch": "tailwindcss -i ./src/style.css -o ./_site/style.css --watch"
+    "tailwind": "tailwindcss -i ./src/css/style.css -o ./_site/css/style.css",
+    "tailwind:watch": "tailwindcss -i ./src/css/style.css -o ./_site/css/style.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,10 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@tailwindcss/typography": "^0.5.10",
+    "dayjs": "^1.11.10",
     "prettier": "^3.2.5",
-    "tailwindcss": "^3.4.1"
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-safe-area": "^0.5.1"
   }
 }
