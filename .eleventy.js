@@ -8,7 +8,7 @@ module.exports = function (config) {
   config.addPlugin(syntaxHighlight);
   config.addPlugin(rss);
 
-  // Needed to GitHub Pages hosting
+  // Needed for GitHub Pages hosting
   config.addPassthroughCopy("src/CNAME");
 
   config.addPassthroughCopy("src/robots.txt");

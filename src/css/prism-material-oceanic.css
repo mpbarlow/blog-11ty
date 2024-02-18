@@ -8,9 +8,6 @@
     word-wrap: normal;
     color: #c3cee3;
     background: rgb(55, 65, 81);
-    font-family:
-      Roboto Mono,
-      monospace;
     line-height: 1.5em;
 
     -moz-tab-size: 4;
@@ -24,10 +21,9 @@
   }
 
   pre[class*="language-"] {
-    overflow: auto;
-    position: relative;
-    margin: 0.5em 0;
     padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
   }
 
   .language-css > code,
@@ -128,7 +124,6 @@
 
   .token.keyword {
     color: #c792ea;
-    font-style: italic;
   }
 
   .token.number {
