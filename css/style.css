@@ -1080,10 +1080,6 @@ video {
   bottom: -15px;
 }
 
-.bottom-\[-20px\] {
-  bottom: -20px;
-}
-
 .bottom-\[-870px\] {
   bottom: -870px;
 }
@@ -1115,10 +1111,6 @@ video {
 
 .mt-12 {
   margin-top: 3rem;
-}
-
-.mt-2 {
-  margin-top: 0.5rem;
 }
 
 .mt-4 {
