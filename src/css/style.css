@@ -11,3 +11,25 @@
   font-family: "MonaspaceNeon";
   src: url("/font/MonaspaceNeon-Regular.woff");
 }
+
+.header-background {
+  @apply relative;
+}
+
+/* Apply the slanted grey background using a pseudo element. width: 100vw + left: 50% + margin-left: -50vw allows the 
+full-width background to escape the width-constrained body but still be horizontally centred. */
+.header-background::after {
+  @apply absolute bottom-[-15px] left-[50%] -z-10 ml-[-50vw] h-[1000px] w-screen origin-bottom -skew-y-2 bg-gray-100 content-[''] dark:bg-gray-700;
+}
+
+/* The footer is a bit different because, while a large pseudo element at the top doesn't push the content down, the
+same at the bottom will result in a big empty scrollable region at the end of the page. To get around that we anchor
+a sufficiently tall div to the bottom of the page, hide the overflow, the put the pseudo element inside that.
+CSS is perpetual torment. */
+.footer-background {
+  @apply absolute inset-x-0 bottom-0 left-[50%] -z-10 ml-[-50vw] h-[250px] w-screen overflow-hidden;
+}
+
+.footer-background::after {
+  @apply absolute inset-x-0 bottom-[-370px] h-[500px] w-full origin-top -skew-y-2 bg-gray-100 content-[''] dark:bg-gray-700;
+}

@@ -3,37 +3,31 @@ layout: layout.njk
 title: "Home"
 ---
 
-{%- from "pizzazz.njk" import pizzazz -%}
-
-<section class="relative">
-  {{ pizzazz('bottom-[-15px]') }}
-
-  <div
-    class="mx-auto mb-8 flex max-w-prose flex-col items-start space-y-4 px-safe-offset-4 sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0 md:px-0"
-  >
-    <img
-      src="https://www.gravatar.com/avatar/f69faa2d58c63710b6ce0c9172d8d527?s=350"
-      alt="A picture of me on the Headstone Viaduct on the Monsal Trail, Derbyshire, UK"
-      class="w-1/4 flex-shrink-0 rounded-full border-2 border-white shadow-md"
-    />
-    <div class="prose prose-indigo dark:prose-invert">
-      <h1>Hi. I'm Matt.</h1>
-      <p>
-        I'm a software developer based in the UK. I work on projects in
-        <a href="https://www.php.net">PHP</a> (particularly <a href="https://laravel.com">Laravel</a>),
-        <a href="https://go.dev">Go</a>, <a href="https://www.typescriptlang.org/">TypeScript</a>,
-        <a href="https://vuejs.org">Vue</a>, and <a href="https://tailwindcss.com">Tailwind</a>.
-      </p>
-      <p>
-        If you want to contact me,
-        <a href="https://cyberplace.social/@barlow">toot me on Mastodon</a>.
-      </p>
-    </div>
+<section
+  class="header-background mb-8 flex flex-col items-start space-y-4 sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0"
+>
+  <img
+    src="https://www.gravatar.com/avatar/f69faa2d58c63710b6ce0c9172d8d527?s=350"
+    alt="A picture of me on the Headstone Viaduct on the Monsal Trail, Derbyshire, UK"
+    class="w-1/4 flex-shrink-0 rounded-full border-2 border-white shadow-md"
+  />
+  <div class="prose prose-indigo dark:prose-invert">
+    <h1>Hi. I'm Matt.</h1>
+    <p>
+      I'm a software developer based in the UK. I work on projects in
+      <a href="https://www.php.net">PHP</a> (particularly <a href="https://laravel.com">Laravel</a>),
+      <a href="https://go.dev">Go</a>, <a href="https://www.typescriptlang.org/">TypeScript</a>,
+      <a href="https://vuejs.org">Vue</a>, and <a href="https://tailwindcss.com">Tailwind</a>.
+    </p>
+    <p>
+      If you want to contact me,
+      <a href="https://cyberplace.social/@barlow">toot me on Mastodon</a>.
+    </p>
   </div>
 </section>
 
-<section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-  <h1>Newest posts</h1>
+<section class="prose prose-indigo mt-12 dark:prose-invert">
+  <h2>Newest posts</h2>
 
   {% for group, posts in collections.posts | recent | reverse | groupByYearMonth %}
   <h3>{{ group }}</h3>
@@ -47,6 +41,6 @@ title: "Home"
   {% endfor %}
 </section>
 
-<section class="prose prose-indigo mx-auto mt-8 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
+<section class="prose prose-indigo mt-8 dark:prose-invert">
   <a href="/posts/">All posts</a> &bull; <a href="/tags/">By tag</a>
 </section>

@@ -2,36 +2,28 @@
 layout: layout.njk
 ---
 
-{%- from "pizzazz.njk" import pizzazz -%}
-
 <article>
-  <section class="relative">
-    <div class="prose mx-auto max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-      <h1>{{ title }}</h1>
-      {% if description %}
-      <h4>{{ description }}</h4>
-      {% endif %}
+  <section class="header-background prose dark:prose-invert">
+    <h1>{{ title }}</h1>
+    {% if description %}
+    <h4>{{ description }}</h4>
+    {% endif %}
 
-      <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
-        <p>{{ content | textOnly | wordcount | readingTime }} read &bull; {{ date | postDate }}</p>
+    <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
+      <p>{{ content | textOnly | wordcount | readingTime }} read &bull; {{ date | postDate }}</p>
 
-        <div class="mt-1 flex flex-wrap text-xs">
-          {% for tag in post_tags | sort %}
-          <a
-            href="/tags/{{ tag | slug }}/"
-            title="See all posts tagged '{{ tag }}'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >{{ tag }}</a
-          >
-          {% endfor %}
-        </div>
-      </aside>
-    </div>
-
-    {{ pizzazz('bottom-[-15px]') }}
+      <div class="mt-1 flex flex-wrap text-xs">
+        {% for tag in post_tags | sort %}
+        <a
+          href="/tags/{{ tag | slug }}/"
+          title="See all posts tagged '{{ tag }}'"
+          class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
+          >{{ tag }}</a
+        >
+        {% endfor %}
+      </div>
+    </aside>
   </section>
 
-  <section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-    {{ content | safe }}
-  </section>
+  <section class="prose prose-indigo mt-12 dark:prose-invert">{{ content | safe }}</section>
 </article>

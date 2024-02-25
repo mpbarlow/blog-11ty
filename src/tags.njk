@@ -3,17 +3,11 @@ layout: layout.njk
 title: "Post tags"
 ---
 
-{%- from "pizzazz.njk" import pizzazz -%}
+<section class="header-background prose prose-indigo dark:prose-invert">
+  <h1>{{ title }}</h1>
+</section>
 
-<div class="relative">
-  {{ pizzazz('bottom-[-15px]') }}
-
-  <div class="prose prose-indigo mx-auto max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-    <h1>{{ title }}</h1>
-  </div>
-</div>
-
-<section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
+<section class="prose prose-indigo mt-12 dark:prose-invert">
   <ul>
     {% for tag in collections.posts | extractTags | sort %}
     <li><a href="/tags/{{ tag | slug }}/">{{ tag }}</a> ({{ collections.posts | filterByTag(tag) | length }})</li>

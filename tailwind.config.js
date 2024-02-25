@@ -10,6 +10,12 @@ module.exports = {
       fontFamily: {
         mono: ['"MonaspaceNeon"', ...defaultTheme.fontFamily.mono],
       },
+      gridTemplateColumns: {
+        layout: "minmax(0, 100vw)",
+      },
+      gridTemplateRows: {
+        layout: "auto minmax(0, 1fr) auto",
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
