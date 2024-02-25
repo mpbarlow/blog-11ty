@@ -7,6 +7,9 @@ module.exports = {
   darkMode: "media",
   theme: {
     extend: {
+      boxShadow: {
+        hard: "2px 2px var(--tw-shadow-color)",
+      },
       fontFamily: {
         mono: ['"MonaspaceNeon"', ...defaultTheme.fontFamily.mono],
       },
