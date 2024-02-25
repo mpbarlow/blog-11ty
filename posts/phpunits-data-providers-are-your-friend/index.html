@@ -28,76 +28,66 @@
     <title>PHPUnit’s Data Providers are your friend - barlow.dev</title>
   </head>
 
-  <body class="flex min-h-dvh flex-col items-stretch dark:bg-gray-800">
-    <div>
-      <nav
-        class="mx-auto mt-4 flex max-w-prose items-center justify-between px-safe-offset-4 dark:prose-invert md:px-0"
-      >
-        <a href="/" title="Home">
-          <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
-        </a>
-        <div class="space-x-2">
-          <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
-          <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
-          <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
-        </div>
-      </nav>
-    </div>
+  <body
+    class="grid-rows-layout grid-cols-layout mx-auto grid min-h-dvh max-w-prose px-safe-offset-4 md:px-0 dark:bg-gray-800"
+  >
+    <nav class="mt-4 flex items-center justify-between dark:prose-invert">
+      <a href="/" title="Home">
+        <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
+      </a>
+      <div class="space-x-2 sm:space-x-4">
+        <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
+        <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
+        <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
+      </div>
+    </nav>
 
-    <main class="mb-12 mt-8 flex-grow"><article>
-  <section class="relative">
-    <div class="prose mx-auto max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-      <h1>PHPUnit’s Data Providers are your friend</h1>
-      
-      <h4>An introduction to PHPUnit Data Providers and the benefits they…provide</h4>
-      
-
-      <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
-        <p>4 minute read &bull; 30th Jan 2024</p>
-
-        <div class="mt-1 flex flex-wrap text-xs">
-          
-          <a
-            href="/tags/php/"
-            title="See all posts tagged 'php'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >php</a
-          >
-          
-          <a
-            href="/tags/phpunit/"
-            title="See all posts tagged 'phpunit'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >phpunit</a
-          >
-          
-          <a
-            href="/tags/programming/"
-            title="See all posts tagged 'programming'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >programming</a
-          >
-          
-          <a
-            href="/tags/testing/"
-            title="See all posts tagged 'testing'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >testing</a
-          >
-          
-        </div>
-      </aside>
-    </div>
-
+    <main class="mb-12 mt-8">
+<article>
+  <section class="header-background prose dark:prose-invert">
+    <h1>PHPUnit’s Data Providers are your friend</h1>
     
-<div
-  class="bottom-[-15px] absolute inset-x-0 -z-10 h-[1000px] origin-bottom -skew-y-2 bg-gray-100 dark:bg-gray-700"
-></div>
+    <h4>An introduction to PHPUnit Data Providers and the benefits they…provide</h4>
+    
 
+    <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
+      <p>4 minute read &bull; 30th Jan 2024</p>
+
+      <div class="mt-1 flex flex-wrap text-xs">
+        
+        <a
+          href="/tags/php/"
+          title="See all posts tagged 'php'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >php</a
+        >
+        
+        <a
+          href="/tags/phpunit/"
+          title="See all posts tagged 'phpunit'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >phpunit</a
+        >
+        
+        <a
+          href="/tags/programming/"
+          title="See all posts tagged 'programming'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >programming</a
+        >
+        
+        <a
+          href="/tags/testing/"
+          title="See all posts tagged 'testing'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >testing</a
+        >
+        
+      </div>
+    </aside>
   </section>
 
-  <section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-    <p>For a while after I got serious about good test coverage, my tests would often end up quite sprawling, usually with only one assertion of any real value per test case.</p>
+  <section class="prose prose-indigo mt-12 dark:prose-invert"><p>For a while after I got serious about good test coverage, my tests would often end up quite sprawling, usually with only one assertion of any real value per test case.</p>
 <p>Since I started to lean more into PHPUnit’s <a href="https://phpunit.de/manual/3.7/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers">Data Providers</a>, my tests have become much simpler, and as a result easier to read, review, and maintain. Writing tests is usually not the hardest part of development of course, but I believe that reducing friction as much as possible naturally leads to better tests with more coverage.</p>
 <p>As a toy example, let’s say I’ve configured a route in a Laravel app to allow listing a new product in an e-commerce system. That route has validation that looks like this:</p>
 <pre class="language-php"><code class="language-php"><span class="token keyword">class</span> <span class="token class-name-definition class-name">CreateProductFormRequest</span> <span class="token keyword">extends</span> <span class="token class-name">FormRequest</span>
@@ -237,13 +227,12 @@
 <h2>A note on model factories</h2>
 <p>My examples above are based around Laravel, but if you try to use framework features like model factories in Data Providers, you're likely to run into somewhat cryptic errors about facade roots, because the Provider runs before the framework boots. Greg Mayes has an <a href="https://www.gregmayes.dev/posts/2024/02/03/using-laravel-model-factories-in-phpunit-data-providers/">excellent post on how to solve this</a> by wrapping the data in closures to delay execution.</p>
 <p>And that’s really all there is to it! Data Providers aren’t a complex feature to use, but they can be a huge help in making tests with many permutations a lot more pleasant to write.</p>
-
-  </section>
+</section>
 </article>
 </main>
 
     <footer class="relative pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
-      <nav class="mx-auto flex max-w-prose items-center justify-around">
+      <nav class="flex items-center justify-around">
         <a
   rel="me"
   href="https://cyberplace.social/@barlow"
@@ -308,10 +297,7 @@
 
       </nav>
       <p class="mt-8">&copy; MMXXIV Matt Barlow</p>
-      <!-- CSS is misery and you cannot convince me otherwise -->
-      <div class="absolute inset-x-0 bottom-0 -z-10 h-[1000px] overflow-hidden">
-        <div class="absolute bottom-[-870px] h-[1000px] w-full -skew-y-2 bg-gray-100 dark:bg-gray-700"></div>
-      </div>
+      <div class="footer-background"></div>
     </footer>
   </body>
 </html>

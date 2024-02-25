@@ -25,35 +25,26 @@
     <title>Posts tagged &#39;php&#39; - barlow.dev</title>
   </head>
 
-  <body class="flex min-h-dvh flex-col items-stretch dark:bg-gray-800">
-    <div>
-      <nav
-        class="mx-auto mt-4 flex max-w-prose items-center justify-between px-safe-offset-4 dark:prose-invert md:px-0"
-      >
-        <a href="/" title="Home">
-          <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
-        </a>
-        <div class="space-x-2">
-          <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
-          <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
-          <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
-        </div>
-      </nav>
-    </div>
+  <body
+    class="grid-rows-layout grid-cols-layout mx-auto grid min-h-dvh max-w-prose px-safe-offset-4 md:px-0 dark:bg-gray-800"
+  >
+    <nav class="mt-4 flex items-center justify-between dark:prose-invert">
+      <a href="/" title="Home">
+        <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
+      </a>
+      <div class="space-x-2 sm:space-x-4">
+        <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
+        <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
+        <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
+      </div>
+    </nav>
 
-    <main class="mb-12 mt-8 flex-grow"><div class="relative">
-  
-<div
-  class="bottom-[-15px] absolute inset-x-0 -z-10 h-[1000px] origin-bottom -skew-y-2 bg-gray-100 dark:bg-gray-700"
-></div>
+    <main class="mb-12 mt-8">
+<section class="header-background prose prose-indigo dark:prose-invert">
+  <h1>Posts tagged 'php'</h1>
+</section>
 
-
-  <div class="prose prose-indigo mx-auto max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-    <h1>Posts tagged 'php'</h1>
-  </div>
-</div>
-
-<section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
+<section class="prose prose-indigo mt-12 dark:prose-invert">
   
   <h3>February 2024</h3>
   <ul>
@@ -90,7 +81,7 @@
 </main>
 
     <footer class="relative pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
-      <nav class="mx-auto flex max-w-prose items-center justify-around">
+      <nav class="flex items-center justify-around">
         <a
   rel="me"
   href="https://cyberplace.social/@barlow"
@@ -155,10 +146,7 @@
 
       </nav>
       <p class="mt-8">&copy; MMXXIV Matt Barlow</p>
-      <!-- CSS is misery and you cannot convince me otherwise -->
-      <div class="absolute inset-x-0 bottom-0 -z-10 h-[1000px] overflow-hidden">
-        <div class="absolute bottom-[-870px] h-[1000px] w-full -skew-y-2 bg-gray-100 dark:bg-gray-700"></div>
-      </div>
+      <div class="footer-background"></div>
     </footer>
   </body>
 </html>

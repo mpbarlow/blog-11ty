@@ -25,81 +25,71 @@
     <title>Impressions of Go, from a newbie - barlow.dev</title>
   </head>
 
-  <body class="flex min-h-dvh flex-col items-stretch dark:bg-gray-800">
-    <div>
-      <nav
-        class="mx-auto mt-4 flex max-w-prose items-center justify-between px-safe-offset-4 dark:prose-invert md:px-0"
-      >
-        <a href="/" title="Home">
-          <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
-        </a>
-        <div class="space-x-2">
-          <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
-          <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
-          <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
-        </div>
-      </nav>
-    </div>
+  <body
+    class="grid-rows-layout grid-cols-layout mx-auto grid min-h-dvh max-w-prose px-safe-offset-4 md:px-0 dark:bg-gray-800"
+  >
+    <nav class="mt-4 flex items-center justify-between dark:prose-invert">
+      <a href="/" title="Home">
+        <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
+      </a>
+      <div class="space-x-2 sm:space-x-4">
+        <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
+        <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
+        <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
+      </div>
+    </nav>
 
-    <main class="mb-12 mt-8 flex-grow"><article>
-  <section class="relative">
-    <div class="prose mx-auto max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-      <h1>Impressions of Go, from a newbie</h1>
-      
-
-      <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
-        <p>11 minute read &bull; 27th Jan 2024</p>
-
-        <div class="mt-1 flex flex-wrap text-xs">
-          
-          <a
-            href="/tags/go/"
-            title="See all posts tagged 'go'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >go</a
-          >
-          
-          <a
-            href="/tags/javascript/"
-            title="See all posts tagged 'javascript'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >javascript</a
-          >
-          
-          <a
-            href="/tags/php/"
-            title="See all posts tagged 'php'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >php</a
-          >
-          
-          <a
-            href="/tags/programming/"
-            title="See all posts tagged 'programming'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >programming</a
-          >
-          
-          <a
-            href="/tags/typescript/"
-            title="See all posts tagged 'typescript'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >typescript</a
-          >
-          
-        </div>
-      </aside>
-    </div>
-
+    <main class="mb-12 mt-8">
+<article>
+  <section class="header-background prose dark:prose-invert">
+    <h1>Impressions of Go, from a newbie</h1>
     
-<div
-  class="bottom-[-15px] absolute inset-x-0 -z-10 h-[1000px] origin-bottom -skew-y-2 bg-gray-100 dark:bg-gray-700"
-></div>
 
+    <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
+      <p>11 minute read &bull; 27th Jan 2024</p>
+
+      <div class="mt-1 flex flex-wrap text-xs">
+        
+        <a
+          href="/tags/go/"
+          title="See all posts tagged 'go'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >go</a
+        >
+        
+        <a
+          href="/tags/javascript/"
+          title="See all posts tagged 'javascript'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >javascript</a
+        >
+        
+        <a
+          href="/tags/php/"
+          title="See all posts tagged 'php'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >php</a
+        >
+        
+        <a
+          href="/tags/programming/"
+          title="See all posts tagged 'programming'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >programming</a
+        >
+        
+        <a
+          href="/tags/typescript/"
+          title="See all posts tagged 'typescript'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >typescript</a
+        >
+        
+      </div>
+    </aside>
   </section>
 
-  <section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-    <p><strong>Disclaimer</strong>: as the title suggests, I’m still new to Go. It’s entirely possible that some of the things I mention in this post may be based on an incomplete understanding, or it might just be that there’s parts of Go I don’t fully appreciate yet. This is simply my initial impressions, now that I’ve worked on a few real-world projects.</p>
+  <section class="prose prose-indigo mt-12 dark:prose-invert"><p><strong>Disclaimer</strong>: as the title suggests, I’m still new to Go. It’s entirely possible that some of the things I mention in this post may be based on an incomplete understanding, or it might just be that there’s parts of Go I don’t fully appreciate yet. This is simply my initial impressions, now that I’ve worked on a few real-world projects.</p>
 <p>For reasons which are entirely uncontroversial and completely understandable, my employer is moving towards TypeScript and Go for new services, having historically used PHP for almost everything on the backend.</p>
 <p>Despite its historic association with shoddy code and an infamously inconsistent standard library, PHP today is an excellent tool to power websites and web apps, and you can be incredibly productive just with what the language itself provides. Bring in a full-stack framework like Laravel, and you can build some crazy complex stuff without ever needing additional packages. This post doesn’t have a lot to do with PHP other than the occasional comparison—I just think it deserves a shout out 😁</p>
 <p>Anyway, at work we have definitely been guilty of also using PHP for purposes it is not at all well suited for (e.g. long-running processes), which is one force of many driving the change.</p>
@@ -146,13 +136,12 @@
 <p>When writing this post, at times I felt like I might unfairly be wanting to turn Go into a language it never claimed to be. But on balance, I think my gripes, if addressed in a hypothetical “Go 2”, would not fundamentally change the principles it adheres to. It was built at least in part to be a language in which inexperienced developers could write good software without shooting themselves in the foot, and while it succeeds in many areas, it also ignores many of the advances in type systems and language design from the last 20 years. Hopefully some of these can find their way into the language in an idiomatic way, much as generics have.</p>
 <p>That said, it would appear there is a lot more Go in my professional future, and I’m very much not mad about that.</p>
 <p>I’d still really like a proper <code>Optional</code> and <code>Result</code> though.</p>
-
-  </section>
+</section>
 </article>
 </main>
 
     <footer class="relative pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
-      <nav class="mx-auto flex max-w-prose items-center justify-around">
+      <nav class="flex items-center justify-around">
         <a
   rel="me"
   href="https://cyberplace.social/@barlow"
@@ -217,10 +206,7 @@
 
       </nav>
       <p class="mt-8">&copy; MMXXIV Matt Barlow</p>
-      <!-- CSS is misery and you cannot convince me otherwise -->
-      <div class="absolute inset-x-0 bottom-0 -z-10 h-[1000px] overflow-hidden">
-        <div class="absolute bottom-[-870px] h-[1000px] w-full -skew-y-2 bg-gray-100 dark:bg-gray-700"></div>
-      </div>
+      <div class="footer-background"></div>
     </footer>
   </body>
 </html>

@@ -25,81 +25,71 @@
     <title>Query-time Attribute Casting in Laravel - barlow.dev</title>
   </head>
 
-  <body class="flex min-h-dvh flex-col items-stretch dark:bg-gray-800">
-    <div>
-      <nav
-        class="mx-auto mt-4 flex max-w-prose items-center justify-between px-safe-offset-4 dark:prose-invert md:px-0"
-      >
-        <a href="/" title="Home">
-          <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
-        </a>
-        <div class="space-x-2">
-          <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
-          <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
-          <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
-        </div>
-      </nav>
-    </div>
+  <body
+    class="grid-rows-layout grid-cols-layout mx-auto grid min-h-dvh max-w-prose px-safe-offset-4 md:px-0 dark:bg-gray-800"
+  >
+    <nav class="mt-4 flex items-center justify-between dark:prose-invert">
+      <a href="/" title="Home">
+        <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
+      </a>
+      <div class="space-x-2 sm:space-x-4">
+        <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
+        <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
+        <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
+      </div>
+    </nav>
 
-    <main class="mb-12 mt-8 flex-grow"><article>
-  <section class="relative">
-    <div class="prose mx-auto max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-      <h1>Query-time Attribute Casting in Laravel</h1>
-      
-
-      <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
-        <p>4 minute read &bull; 31st May 2020</p>
-
-        <div class="mt-1 flex flex-wrap text-xs">
-          
-          <a
-            href="/tags/eloquent/"
-            title="See all posts tagged 'eloquent'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >eloquent</a
-          >
-          
-          <a
-            href="/tags/laravel/"
-            title="See all posts tagged 'laravel'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >laravel</a
-          >
-          
-          <a
-            href="/tags/php/"
-            title="See all posts tagged 'php'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >php</a
-          >
-          
-          <a
-            href="/tags/programming/"
-            title="See all posts tagged 'programming'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >programming</a
-          >
-          
-          <a
-            href="/tags/web-development/"
-            title="See all posts tagged 'web development'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >web development</a
-          >
-          
-        </div>
-      </aside>
-    </div>
-
+    <main class="mb-12 mt-8">
+<article>
+  <section class="header-background prose dark:prose-invert">
+    <h1>Query-time Attribute Casting in Laravel</h1>
     
-<div
-  class="bottom-[-15px] absolute inset-x-0 -z-10 h-[1000px] origin-bottom -skew-y-2 bg-gray-100 dark:bg-gray-700"
-></div>
 
+    <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
+      <p>4 minute read &bull; 31st May 2020</p>
+
+      <div class="mt-1 flex flex-wrap text-xs">
+        
+        <a
+          href="/tags/eloquent/"
+          title="See all posts tagged 'eloquent'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >eloquent</a
+        >
+        
+        <a
+          href="/tags/laravel/"
+          title="See all posts tagged 'laravel'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >laravel</a
+        >
+        
+        <a
+          href="/tags/php/"
+          title="See all posts tagged 'php'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >php</a
+        >
+        
+        <a
+          href="/tags/programming/"
+          title="See all posts tagged 'programming'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >programming</a
+        >
+        
+        <a
+          href="/tags/web-development/"
+          title="See all posts tagged 'web development'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >web development</a
+        >
+        
+      </div>
+    </aside>
   </section>
 
-  <section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-    <p>Back in January <a href="https://github.com/laravel/framework/pull/31102">I opened a small pull request to the Laravel framework</a> to enable query-time casting of Eloquent attributes. Laravel already allowed static casting, where an array <code>$casts</code> could be defined on a model, containing key-value pairs of attributes and the data type they should be automatically cast to. This is a very nice quality-of-life feature for things like dates or JSON columns, allowing you to transparently map flat data to rich objects.</p>
+  <section class="prose prose-indigo mt-12 dark:prose-invert"><p>Back in January <a href="https://github.com/laravel/framework/pull/31102">I opened a small pull request to the Laravel framework</a> to enable query-time casting of Eloquent attributes. Laravel already allowed static casting, where an array <code>$casts</code> could be defined on a model, containing key-value pairs of attributes and the data type they should be automatically cast to. This is a very nice quality-of-life feature for things like dates or JSON columns, allowing you to transparently map flat data to rich objects.</p>
 <p>For Laravel 6, <a href="https://twitter.com/reinink">Jonathan Reinink</a> submitted some <a href="https://github.com/laravel/framework/pull/29567">very nice improvements</a> to subquery selects, which I eagerly adopted in both personal and work projects.</p>
 <h2>The problem</h2>
 <p>One small snag came to light though: while I could now use subqueries more easily than ever, the resulting values were always plain text. In one particular system I manage, a common type of query results in several dates, where the columns on the main table being queried are automatically cast to Carbon objects, while the columns selected from subqueries are plain text timestamps.</p>
@@ -132,13 +122,12 @@
     <span class="token operator">-></span><span class="token function">withCasts</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'last_posted_at'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'date'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token operator">-></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>As an added bonus, because it just uses the cast functionality that already existed in the framework, it works nicely with the <a href="https://github.com/laravel/framework/pull/31035">custom cast types feature</a> that was also added in Laravel 7.</p>
-
-  </section>
+</section>
 </article>
 </main>
 
     <footer class="relative pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
-      <nav class="mx-auto flex max-w-prose items-center justify-around">
+      <nav class="flex items-center justify-around">
         <a
   rel="me"
   href="https://cyberplace.social/@barlow"
@@ -203,10 +192,7 @@
 
       </nav>
       <p class="mt-8">&copy; MMXXIV Matt Barlow</p>
-      <!-- CSS is misery and you cannot convince me otherwise -->
-      <div class="absolute inset-x-0 bottom-0 -z-10 h-[1000px] overflow-hidden">
-        <div class="absolute bottom-[-870px] h-[1000px] w-full -skew-y-2 bg-gray-100 dark:bg-gray-700"></div>
-      </div>
+      <div class="footer-background"></div>
     </footer>
   </body>
 </html>

@@ -1059,33 +1059,8 @@ video {
   background-color: #eef2ff;
 }
 
-.absolute {
-  position: absolute;
-}
-
 .relative {
   position: relative;
-}
-
-.inset-x-0 {
-  left: 0px;
-  right: 0px;
-}
-
-.bottom-0 {
-  bottom: 0px;
-}
-
-.bottom-\[-15px\] {
-  bottom: -15px;
-}
-
-.bottom-\[-870px\] {
-  bottom: -870px;
-}
-
-.-z-10 {
-  z-index: -10;
 }
 
 .mx-auto {
@@ -1125,12 +1100,12 @@ video {
   display: flex;
 }
 
-.hidden {
-  display: none;
+.grid {
+  display: grid;
 }
 
-.h-\[1000px\] {
-  height: 1000px;
+.hidden {
+  display: none;
 }
 
 .h-\[64px\] {
@@ -1149,10 +1124,6 @@ video {
   width: 64px;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .max-w-prose {
   max-width: 65ch;
 }
@@ -1161,17 +1132,12 @@ video {
   flex-shrink: 0;
 }
 
-.flex-grow {
-  flex-grow: 1;
+.grid-cols-layout {
+  grid-template-columns: minmax(0, 100vw);
 }
 
-.origin-bottom {
-  transform-origin: bottom;
-}
-
-.-skew-y-2 {
-  --tw-skew-y: -2deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+.grid-rows-layout {
+  grid-template-rows: auto minmax(0, 1fr) auto;
 }
 
 .flex-col {
@@ -1188,10 +1154,6 @@ video {
 
 .items-center {
   align-items: center;
-}
-
-.items-stretch {
-  align-items: stretch;
 }
 
 .justify-between {
@@ -1214,16 +1176,8 @@ video {
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
-.overflow-hidden {
-  overflow: hidden;
-}
-
 .rounded-full {
   border-radius: 9999px;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
 }
 
 .border {
@@ -1242,11 +1196,6 @@ video {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
-}
-
-.bg-gray-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 .px-2 {
@@ -1311,10 +1260,21 @@ video {
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 
+.shadow-hard {
+  --tw-shadow: 2px 2px var(--tw-shadow-color);
+  --tw-shadow-colored: 2px 2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-gray-400 {
+  --tw-shadow-color: #9ca3af;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .px-safe-offset-4 {
@@ -1334,7 +1294,77 @@ video {
   src: url("/font/MonaspaceNeon-Regular.woff");
 }
 
+.header-background {
+  position: relative;
+}
+
+/* Apply the slanted grey background using a pseudo element. width: 100vw + left: 50% + margin-left: -50vw allows the 
+full-width background to escape the width-constrained body but still be horizontally centred. */
+
+.header-background::after {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  z-index: -10;
+  margin-left: -50vw;
+  height: 1000px;
+  width: 100vw;
+  transform-origin: bottom;
+  --tw-skew-y: -2deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  --tw-content: '';
+  content: var(--tw-content);
+}
+
 @media (prefers-color-scheme: dark) {
+  .header-background::after {
+    --tw-bg-opacity: 1;
+    background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  }
+}
+
+/* The footer is a bit different because, while a large pseudo element at the top doesn't push the content down, the
+same at the bottom will result in a big empty scrollable region at the end of the page. To get around that we anchor
+a sufficiently tall div to the bottom of the page, hide the overflow, the put the pseudo element inside that.
+CSS is perpetual torment. */
+
+.footer-background {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 50%;
+  z-index: -10;
+  margin-left: -50vw;
+  height: 250px;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.footer-background::after {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: -370px;
+  height: 500px;
+  width: 100%;
+  transform-origin: top;
+  --tw-skew-y: -2deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  --tw-content: '';
+  content: var(--tw-content);
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer-background::after {
+    --tw-bg-opacity: 1;
+    background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  }
+
   .dark\:prose-invert {
     --tw-prose-body: var(--tw-prose-invert-body);
     --tw-prose-headings: var(--tw-prose-invert-headings);
@@ -1371,6 +1401,11 @@ video {
 .hover\:text-indigo-500:hover {
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
+}
+
+.hover\:shadow-indigo-400:hover {
+  --tw-shadow-color: #818cf8;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .group:hover .group-hover\:inline {
@@ -1411,14 +1446,9 @@ video {
 }
 
 @media (prefers-color-scheme: dark) {
-  .dark\:border-gray-400 {
+  .dark\:border-gray-300 {
     --tw-border-opacity: 1;
-    border-color: rgb(156 163 175 / var(--tw-border-opacity));
-  }
-
-  .dark\:bg-gray-700 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+    border-color: rgb(209 213 219 / var(--tw-border-opacity));
   }
 
   .dark\:bg-gray-800 {
@@ -1439,5 +1469,25 @@ video {
   .dark\:text-indigo-400 {
     --tw-text-opacity: 1;
     color: rgb(129 140 248 / var(--tw-text-opacity));
+  }
+
+  .dark\:shadow-gray-500 {
+    --tw-shadow-color: #6b7280;
+    --tw-shadow: var(--tw-shadow-colored);
+  }
+
+  .dark\:hover\:border-indigo-400:hover {
+    --tw-border-opacity: 1;
+    border-color: rgb(129 140 248 / var(--tw-border-opacity));
+  }
+
+  .dark\:hover\:text-indigo-400:hover {
+    --tw-text-opacity: 1;
+    color: rgb(129 140 248 / var(--tw-text-opacity));
+  }
+
+  .dark\:hover\:shadow-indigo-500:hover {
+    --tw-shadow-color: #6366f1;
+    --tw-shadow: var(--tw-shadow-colored);
   }
 }

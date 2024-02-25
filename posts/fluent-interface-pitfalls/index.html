@@ -25,81 +25,71 @@
     <title>Fluent interface pitfalls - barlow.dev</title>
   </head>
 
-  <body class="flex min-h-dvh flex-col items-stretch dark:bg-gray-800">
-    <div>
-      <nav
-        class="mx-auto mt-4 flex max-w-prose items-center justify-between px-safe-offset-4 dark:prose-invert md:px-0"
-      >
-        <a href="/" title="Home">
-          <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
-        </a>
-        <div class="space-x-2">
-          <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
-          <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
-          <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
-        </div>
-      </nav>
-    </div>
+  <body
+    class="grid-rows-layout grid-cols-layout mx-auto grid min-h-dvh max-w-prose px-safe-offset-4 md:px-0 dark:bg-gray-800"
+  >
+    <nav class="mt-4 flex items-center justify-between dark:prose-invert">
+      <a href="/" title="Home">
+        <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
+      </a>
+      <div class="space-x-2 sm:space-x-4">
+        <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
+        <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
+        <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
+      </div>
+    </nav>
 
-    <main class="mb-12 mt-8 flex-grow"><article>
-  <section class="relative">
-    <div class="prose mx-auto max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-      <h1>Fluent interface pitfalls</h1>
-      
-
-      <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
-        <p>6 minute read &bull; 8th Feb 2024</p>
-
-        <div class="mt-1 flex flex-wrap text-xs">
-          
-          <a
-            href="/tags/fp/"
-            title="See all posts tagged 'fp'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >fp</a
-          >
-          
-          <a
-            href="/tags/oop/"
-            title="See all posts tagged 'oop'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >oop</a
-          >
-          
-          <a
-            href="/tags/php/"
-            title="See all posts tagged 'php'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >php</a
-          >
-          
-          <a
-            href="/tags/programming/"
-            title="See all posts tagged 'programming'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >programming</a
-          >
-          
-          <a
-            href="/tags/testing/"
-            title="See all posts tagged 'testing'"
-            class="mr-1 mt-1 rounded-lg border border-gray-500 px-2 py-1 text-gray-500 hover:border-indigo-500 hover:text-indigo-500 dark:border-gray-400 dark:text-gray-400"
-            >testing</a
-          >
-          
-        </div>
-      </aside>
-    </div>
-
+    <main class="mb-12 mt-8">
+<article>
+  <section class="header-background prose dark:prose-invert">
+    <h1>Fluent interface pitfalls</h1>
     
-<div
-  class="bottom-[-15px] absolute inset-x-0 -z-10 h-[1000px] origin-bottom -skew-y-2 bg-gray-100 dark:bg-gray-700"
-></div>
 
+    <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
+      <p>6 minute read &bull; 8th Feb 2024</p>
+
+      <div class="mt-1 flex flex-wrap text-xs">
+        
+        <a
+          href="/tags/fp/"
+          title="See all posts tagged 'fp'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >fp</a
+        >
+        
+        <a
+          href="/tags/oop/"
+          title="See all posts tagged 'oop'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >oop</a
+        >
+        
+        <a
+          href="/tags/php/"
+          title="See all posts tagged 'php'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >php</a
+        >
+        
+        <a
+          href="/tags/programming/"
+          title="See all posts tagged 'programming'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >programming</a
+        >
+        
+        <a
+          href="/tags/testing/"
+          title="See all posts tagged 'testing'"
+          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >testing</a
+        >
+        
+      </div>
+    </aside>
   </section>
 
-  <section class="prose prose-indigo mx-auto mt-12 max-w-prose px-safe-offset-4 dark:prose-invert md:px-0">
-    <h2>Background</h2>
+  <section class="prose prose-indigo mt-12 dark:prose-invert"><h2>Background</h2>
 <p>Fluent interfaces are very common in the PHP world, as well as many other object-oriented languages. They can provide a very nice way to interface with classes, but they’re often misused—completely accidentally.</p>
 <p>For those not familiar with the term, it’s literally just when methods on an object return the object itself (or, more rarely, a copy) to support method chaining. Configuration is performed in steps, forming a pseudo-DSL that reads nicely and has the potential to be very flexible. It also looks slick, which shouldn’t be a factor, but I think often is.</p>
 <p>Here’s an example. This class performs a file upload to some abstracted filesystem (for example a local disk or S3), with optional logging. Realistically, you probably wouldn’t need a dedicated class for this, but let’s imagine there’s enough additional business logic required that would warrant it.</p>
@@ -208,13 +198,12 @@
 <p>At a practical level, it means you have to be incredibly careful when passing around and reusing highly stateful objects, because changes you make in one place will carry through to subsequent calls. If you write PHP, how many times have you accidentally mutated a regular <code>DateTime</code> when trying to create a new date relative to an existing one? More than once I bet!</p>
 <p>As I said, I’m probably barking up the wrong tree; object-oriented languages are not functional languages and nor should they be. But it’s a valid concern, and one I think fluent interfaces can exacerbate.</p>
 <p>Fluent interfaces are not inherently bad, and when the DSL they form closely matches the natural model of a problem (query builders!) they can be very pleasant to work with. But, as with many things in the OOP world, it’s important to be aware of the pitfalls when considering their use.</p>
-
-  </section>
+</section>
 </article>
 </main>
 
     <footer class="relative pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
-      <nav class="mx-auto flex max-w-prose items-center justify-around">
+      <nav class="flex items-center justify-around">
         <a
   rel="me"
   href="https://cyberplace.social/@barlow"
@@ -279,10 +268,7 @@
 
       </nav>
       <p class="mt-8">&copy; MMXXIV Matt Barlow</p>
-      <!-- CSS is misery and you cannot convince me otherwise -->
-      <div class="absolute inset-x-0 bottom-0 -z-10 h-[1000px] overflow-hidden">
-        <div class="absolute bottom-[-870px] h-[1000px] w-full -skew-y-2 bg-gray-100 dark:bg-gray-700"></div>
-      </div>
+      <div class="footer-background"></div>
     </footer>
   </body>
 </html>
