@@ -12,12 +12,12 @@ layout: layout.njk
     <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
       <p>{{ content | textOnly | wordcount | readingTime }} read &bull; {{ date | postDate }}</p>
 
-      <div class="mt-1 flex flex-wrap text-xs">
+      <div class="flex flex-wrap text-xs">
         {% for tag in post_tags | sort %}
         <a
           href="/tags/{{ tag | slug }}/"
           title="See all posts tagged '{{ tag }}'"
-          class="shadow-hard mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          class="mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-hard shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
           >{{ tag }}</a
         >
         {% endfor %}

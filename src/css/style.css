@@ -19,7 +19,7 @@
 /* Apply the slanted grey background using a pseudo element. width: 100vw + left: 50% + margin-left: -50vw allows the 
 full-width background to escape the width-constrained body but still be horizontally centred. */
 .header-background::after {
-  @apply absolute bottom-[-15px] left-[50%] -z-10 ml-[-50vw] h-[1000px] w-screen origin-bottom -skew-y-2 bg-gray-100 content-[''] dark:bg-gray-700;
+  @apply absolute bottom-[-15px] left-[50%] -z-10 ml-[-50vw] h-[1000px] w-screen origin-bottom -skew-y-2 border-b-2 border-gray-200 bg-gray-100 content-[''] dark:border-gray-600 dark:bg-gray-700;
 }
 
 /* The footer is a bit different because, while a large pseudo element at the top doesn't push the content down, the
@@ -31,5 +31,5 @@ CSS is perpetual torment. */
 }
 
 .footer-background::after {
-  @apply absolute inset-x-0 bottom-[-370px] h-[500px] w-full origin-top -skew-y-2 bg-gray-100 content-[''] dark:bg-gray-700;
+  @apply absolute inset-x-0 bottom-[-370px] h-[500px] w-full origin-top -skew-y-2 border-t-2 border-gray-200 bg-gray-100 content-[''] dark:border-gray-600 dark:bg-gray-700;
 }
