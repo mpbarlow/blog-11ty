@@ -29,7 +29,7 @@
   </head>
 
   <body
-    class="grid-rows-layout grid-cols-layout mx-auto grid min-h-dvh max-w-prose px-safe-offset-4 md:px-0 dark:bg-gray-800"
+    class="mx-auto grid min-h-dvh max-w-prose grid-cols-layout grid-rows-layout px-safe-offset-4 md:px-0 dark:bg-gray-800"
   >
     <nav class="mt-4 flex items-center justify-between dark:prose-invert">
       <a href="/" title="Home">
@@ -44,12 +44,11 @@
 
     <main class="mb-12 mt-8">{{ content | safe }}</main>
 
-    <footer class="relative pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
+    <footer class="footer-background pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
       <nav class="flex items-center justify-around">
         {% include "mastodon_link.html" %} {% include "instagram_link.html" %} {% include "github_link.html" %}
       </nav>
       <p class="mt-8">&copy; {{ currentYear | asRomanNumerals }} Matt Barlow</p>
-      <div class="footer-background"></div>
     </footer>
   </body>
 </html>
