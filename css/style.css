@@ -1059,10 +1059,6 @@ video {
   background-color: #eef2ff;
 }
 
-.relative {
-  position: relative;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1172,16 +1168,14 @@ video {
   justify-content: space-around;
 }
 
+.gap-y-4 {
+  row-gap: 1rem;
+}
+
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .rounded-full {
@@ -1300,20 +1294,21 @@ video {
   position: relative;
 }
 
-/* Apply the slanted grey background using a pseudo element. width: 100vw + left: 50% + margin-left: -50vw allows the 
-full-width background to escape the width-constrained body but still be horizontally centred. */
+/*
+ * Apply the offset grey background using a pseudo element. width: 100vw + left: 50% + margin-left: -50vw allows the 
+ * full-width background to escape the width-constrained body, but still be horizontally centred.
+ * - 1000px height is to cover any reasonable distance down the page we are likely to want to cover
+ * - -0.44444em bottom  is because Tailwind Typography defines h1's bottom margin as 0.88888em, so we want half way.
+ */
 
 .header-background::after {
   position: absolute;
-  bottom: -15px;
+  bottom: -0.44444em;
   left: 50%;
   z-index: -10;
   margin-left: -50vw;
   height: 1000px;
   width: 100vw;
-  transform-origin: bottom;
-  --tw-skew-y: -2deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   border-bottom-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
@@ -1332,12 +1327,33 @@ full-width background to escape the width-constrained body but still be horizont
   }
 }
 
-/* The footer is a bit different because, while a large pseudo element at the top doesn't push the content down, the
-same at the bottom will result in a big empty scrollable region at the end of the page. To get around that we anchor
-a sufficiently tall div to the bottom of the page, hide the overflow, the put the pseudo element inside that.
-CSS is perpetual torment. */
+/*
+ * On the home page, on sm+ displays, the heading we want to give the background to isn't horizontally centered; it's
+ * 3/4 of the content width minus spacing.4, so our "push by 50%, pull by 50vw" trick doesn't work.
+ * 
+ * Instead, to push the background to the exact midpoint (so our -50vw works), we want 1/3 of the 3/4 width (i.e. 1/4
+ * of the content width), but then we've overshot because of the spacing and need to pull back by 3/4 of spacing.4,
+ * which is spacing.3.
+ * 
+ * I fucking hate CSS.
+ */
+
+@media (min-width: 640px) {
+  .header-background-nudge::after {
+    left: calc((100% / 3) - 0.75rem);
+  }
+}
 
 .footer-background {
+  position: relative;
+}
+
+/*
+ * Basically the same thing but for the footer. The footer is always fixed height so we can just use the actual height
+ * we need here, rather than 1000px like the header.
+ */
+
+.footer-background::after {
   position: absolute;
   left: 0px;
   right: 0px;
@@ -1345,21 +1361,8 @@ CSS is perpetual torment. */
   left: 50%;
   z-index: -10;
   margin-left: -50vw;
-  height: 250px;
+  height: 110px;
   width: 100vw;
-  overflow: hidden;
-}
-
-.footer-background::after {
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: -370px;
-  height: 500px;
-  width: 100%;
-  transform-origin: top;
-  --tw-skew-y: -2deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   border-top-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
@@ -1437,16 +1440,19 @@ CSS is perpetual torment. */
     align-items: center;
   }
 
+  .sm\:gap-x-4 {
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
+  }
+
+  .sm\:gap-y-0 {
+    row-gap: 0px;
+  }
+
   .sm\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(1rem * var(--tw-space-x-reverse));
     margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-
-  .sm\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0;
-    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 }
 

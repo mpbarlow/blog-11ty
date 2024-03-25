@@ -26,7 +26,7 @@
   </head>
 
   <body
-    class="grid-rows-layout grid-cols-layout mx-auto grid min-h-dvh max-w-prose px-safe-offset-4 md:px-0 dark:bg-gray-800"
+    class="mx-auto grid min-h-dvh max-w-prose grid-cols-layout grid-rows-layout px-safe-offset-4 md:px-0 dark:bg-gray-800"
   >
     <nav class="mt-4 flex items-center justify-between dark:prose-invert">
       <a href="/" title="Home">
@@ -40,16 +40,14 @@
     </nav>
 
     <main class="mb-12 mt-8">
-<section
-  class="header-background mb-8 flex flex-col items-start space-y-4 sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0"
->
+<section class="mb-8 flex flex-col items-start gap-y-4 sm:flex-row sm:items-center sm:gap-x-4 sm:gap-y-0">
   <img
     src="https://www.gravatar.com/avatar/f69faa2d58c63710b6ce0c9172d8d527?s=350"
     alt="A picture of me on the Headstone Viaduct on the Monsal Trail, Derbyshire, UK"
     class="w-1/4 flex-shrink-0 rounded-full border-2 border-gray-200 dark:border-gray-600"
   />
   <div class="prose prose-indigo dark:prose-invert">
-    <h1>Hi. I'm Matt.</h1>
+    <h1 class="header-background header-background-nudge">Hi. I'm Matt.</h1>
     <p>
       I'm a software developer based in the UK. I work on projects in
       <a href="https://www.php.net">PHP</a> (particularly <a href="https://laravel.com">Laravel</a>),
@@ -96,15 +94,9 @@
 </section>
 </main>
 
-    <footer class="relative pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
+    <footer class="footer-background pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
       <nav class="flex items-center justify-around">
-        <a
-  rel="me"
-  href="https://cyberplace.social/@barlow"
-  target="_blank"
-  title="Toot me on Mastodon"
-  class="hover:text-indigo-500 group flex flex-col"
->
+        <a rel="me" href="https://cyberplace.social/@barlow" target="_blank" title="Toot me on Mastodon" class="group">
   <img
     src="/img/mastodon.png"
     srcset="/img/mastodon_2x.png 2x, /img/mastodon_3x.png 3x"
@@ -117,14 +109,8 @@
     alt="A pixel art elephant bearing the Mastodon logo"
     class="hidden h-[64px] w-[64px] group-hover:inline"
   />
-  <span class="mt-1">Mastodon</span>
 </a>
- <a
-  href="https://www.instagram.com/mattpbarlow"
-  target="_blank"
-  title="Dog pix"
-  class="hover:text-indigo-500 group flex flex-col"
->
+ <a href="https://www.instagram.com/mattpbarlow" target="_blank" title="Dog pix" class="group">
   <img
     src="/img/instagram.png"
     srcset="/img/instagram_2x.png 2x, /img/instagram_3x.png 3x"
@@ -137,14 +123,8 @@
     alt="A pixel art iPhone taking a photo of the Instagram logo"
     class="hidden h-[64px] w-[64px] group-hover:inline"
   />
-  <span class="mt-1">Instagram</span>
 </a>
- <a
-  href="https://github.com/mpbarlow"
-  target="_blank"
-  title="Fork me on GitHub"
-  class="hover:text-indigo-500 group flex flex-col"
->
+ <a href="https://github.com/mpbarlow" target="_blank" title="Fork me on GitHub" class="group">
   <img
     src="/img/github.png"
     srcset="/img/github_2x.png 2x, /img/github_3x.png 3x"
@@ -157,12 +137,10 @@
     alt="A pixel art MacBook displaying the Git logo"
     class="hidden h-[64px] w-[64px] group-hover:inline"
   />
-  <span class="mt-1">GitHub</span>
 </a>
 
       </nav>
       <p class="mt-8">&copy; MMXXIV Matt Barlow</p>
-      <div class="footer-background"></div>
     </footer>
   </body>
 </html>
