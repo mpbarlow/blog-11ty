@@ -4,13 +4,54 @@
   <subtitle>A blog about programming and whatever else irks me enough to write about.</subtitle>
   <link href="https://barlow.dev/feed.xml" rel="self"/>
   <link href="https://barlow.dev"/>
-  <updated>2024-05-13T21:50:35Z</updated>
+  <updated>2024-05-24T22:10:27Z</updated>
   <icon>https://barlow.dev/img/favicon.png</icon>
   <id>https://barlow.dev</id>
   <author>
     <name>Matt Barlow</name>
     <email></email>
   </author>
+  <entry>
+    <title>Modern software has no respect for disk space</title>
+    <link href="https://barlow.dev/posts/modern-software-has-no-respect-for-disk-space/"/>
+    <updated>2024-05-24T22:10:27Z</updated>
+    <id>https://barlow.dev/posts/modern-software-has-no-respect-for-disk-space/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;I feel like it’s sorta common knowledge today, especially if you’re a developer, that most modern software does not give the slightest shit about gobbling up as much RAM and as many CPU cycles as it wants. Developer time is more expensive than hardware; especially if it’s someone else’s hardware you’re spending. It sucks, but it’s a known quantity at this point. What I &lt;em&gt;was&lt;/em&gt; somewhat surprised by recently is just how much of state things are in for disk hogging too.&lt;/p&gt;
+&lt;p&gt;My wife is considering upgrading her base M1 MacBook Air to something with a bit more oomph. It’s done an admirable job, but only having two USB ports is annoying if you don’t have a monitor with USB Power Delivery and/or ports of its own for peripherals, and 8GB RAM is becoming a bottleneck when she has lots of Chrome tabs and Office documents open. Ya know: completely normal, non-nerd stuff.&lt;/p&gt;
+&lt;p&gt;Apple’s pricing for storage is infamously price gouge-y, and we were looking at whether the extra £200 to jump from the 256GB storage she has now up to 512GB would be worth it, as her current machine only had about 20GB free.&lt;/p&gt;
+&lt;p&gt;I loaded up DaisyDisk (a fantastic and inexpensive little piece of software by the way, &lt;a href=&quot;https://daisydiskapp.com/&quot;&gt;highly worth a look&lt;/a&gt;), and here’s some of the stuff I found:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Chrome.app was 8GB. Upon further investigation, inside the main bundle is another bundle called Google Chrome.framework, and inside &lt;em&gt;that&lt;/em&gt; was approximately 15 previous versions of itself that, for whatever reason, never got cleaned up.&lt;/li&gt;
+&lt;li&gt;She has three Chrome profiles; one for each of her two jobs and one for personal browsing. Each of those was between 1 and 3GB—I’m still not entirely sure &lt;em&gt;why&lt;/em&gt;, as best I can tell it’s various caches.&lt;/li&gt;
+&lt;li&gt;Microsoft Teams, despite somehow having a 1.2GB main app bundle, was storing a further 1.5GB of caches and other files.&lt;/li&gt;
+&lt;li&gt;Backblaze internal files totalling 12GB. I actually already knew about this, as I’d ran across it before and discovered that &lt;a href=&quot;https://www.reddit.com/r/backblaze/comments/ay1d14/comment/eicz7fl/&quot;&gt;it’s by design&lt;/a&gt;. Backblaze’s logs of processed files are append-only, and their recommended solution is to just…abandon your backup every few years and push everything completely from scratch. I generally find Backblaze to be a great product, but this always felt like a huge miss to me.&lt;/li&gt;
+&lt;li&gt;Time Machine local snapshots were taking up around 40GB total. This is supposedly purgeable space that is freed up as it’s needed but…well, more on that below.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I then ran it on my own machine as, despite having a 512GB drive, I had much less storage free than I felt like I should given the relatively limited number of files I keep on the machine. I have a lot of developer tools which I know get pretty bloated, but even so:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;10GB of old versions of JetBrains tools. I had the setting enabled in JetBrains Toolbox to keep the last version installed to allow for instant rollback, but that doesn’t explain why I had stuff dating back to 2022. Thankfully there is a UI inside the app itself to clear these out.&lt;/li&gt;
+&lt;li&gt;16GB of those fancy aerial wallpapers that were originally from the Apple TV. This one is sort of on me, given that I deliberately enabled the setting to cycle through them all. But, as far as I can see, there’s no way whatsoever to delete them from the same UI their downloads are triggered from (the Screen Saver area of System Settings). To remove them, I had to find them in &lt;code&gt;/Library/Application Support/com.apple.idleassetsd/Customer/4KSDR240FPS/&lt;/code&gt; and delete the files. Real user friendly.&lt;/li&gt;
+&lt;li&gt;rustup, which I had installed to briefly play around with Rust, had installed 1.5GB of HTML documentation.&lt;/li&gt;
+&lt;li&gt;My NPM cache was 5GB. Actually I’m not surprised by this at all; the entire Node and NPM ecosystem is a fucking mess and I am more surprised every day that it has not exploded spectacularly since &lt;code&gt;left-pad&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Something like 35GB of old iOS Simulators for Xcode. I appreciate that a professional iOS developer might need to keep the sims around for every point release of iOS, but is it too much to ask for a prompt or a setting to automatically clean up the old versions when new ones are installed? At least you can delete these from a UI in Xcode itself.&lt;/li&gt;
+&lt;li&gt;60GB of local Time Machine snapshots&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I can appreciate that in a world of multi-hundred-gigabyte to multi-terabyte disks, griping about a handful of single-digit GB caches seems silly. But when seemingly every large software vendor rolls with the “it’s free real estate” attitude, it can and does add up—to the point where an entry-level machine ends up largely full of stuff that, as far as a typical user is a concerned, is not their files.&lt;/p&gt;
+&lt;p&gt;When a computer runs out of RAM everything gets slow; when it runs out of disk, things &lt;em&gt;break&lt;/em&gt;, in ways that &lt;a href=&quot;https://sixcolors.com/post/2024/03/a-disk-so-full-it-couldnt-be-restored/&quot;&gt;can be difficult to recover from&lt;/a&gt;. Again, more on that below.&lt;/p&gt;
+&lt;p&gt;To quote my wife, “what was I supposed to do if I wasn’t married to a nerd?”—and she’s completely right! Dragging Chrome.app and Teams.app to the trash would have done nothing to clean up the even-larger-still caches sitting there in some obscure system directory.&lt;/p&gt;
+&lt;h2&gt;Addendum: Does anyone at Apple still work on Time Machine?&lt;/h2&gt;
+&lt;p&gt;Time Machine under macOS Sonoma is just knackered.&lt;/p&gt;
+&lt;p&gt;If you use Time Machine, do a backup and let it finish. Then, close all your applications, quit any background applications you know are running, then just let your machine idle for an hour. Do another backup after that hour, and there’s a good chance Time Machine will claim to find tens of thousands of changes and then proceed to very slowly copy between several hundred MB and a few GB to your backup disk. Every. Single. Hour.&lt;/p&gt;
+&lt;p&gt;Ascertaining the real size of files on Macs, particularly APFS-formatted drives, &lt;a href=&quot;https://eclecticlight.co/2024/05/08/how-accurate-are-the-finders-folder-and-volume-sizes/&quot;&gt;is&lt;/a&gt; &lt;a href=&quot;https://eclecticlight.co/2024/01/03/what-should-we-know-about-apfs-special-files/&quot;&gt;notoriously&lt;/a&gt; &lt;a href=&quot;https://eclecticlight.co/2023/12/25/where-are-the-sanity-checks/&quot;&gt;difficult&lt;/a&gt;, but I can see the free disk space on my backup drive ticking down—stuff is actually being written.&lt;/p&gt;
+&lt;p&gt;I know there’s system-level stuff going on in the background that will account for &lt;em&gt;some&lt;/em&gt; changes, even if you’re not actively using the computer. But there’s nothing beyond bugs that should account for that volume of data changing.&lt;/p&gt;
+&lt;p&gt;Next up: local snapshots. As I mentioned above, this is considered purgeable space by macOS, to be freed up when needed. Well, it doesn’t work very well.&lt;/p&gt;
+&lt;p&gt;Last month, I was downloading a ~150GB torrent. I intended to move it immediately off to a network drive after completion, Finder told me I had about 220GB free, and I was downloading to a folder excluded from Time Machine as I have no need for it to be part of my main backup. To me, this seemed totally fine.&lt;/p&gt;
+&lt;p&gt;Imagine my alarm then when I checked up on things after 30 mins to find that the download had stopped due to insufficient disk space. Random apps I had open were popping up scary warnings, and &lt;code&gt;df&lt;/code&gt; was reporting 100% usage of my main Data volume (where user files are stored in modern macOS).&lt;/p&gt;
+&lt;p&gt;I suspected local snapshots were to blame, but &lt;code&gt;tmutil&lt;/code&gt; commands were hanging, and I feared that if I tried to reboot the machine I wouldn’t be able to get back into it. I eventually found around a GB of build files I could regenerate, deleted them to free up some space, and was then able to run &lt;code&gt;tmutil listlocalsnapshots&lt;/code&gt; and &lt;code&gt;tmutil deletelocalsnapshots&lt;/code&gt; to clear out what was there, and whaddayaknow: everything immediately worked fine again.&lt;/p&gt;
+&lt;p&gt;APFS snapshots operate independently of Time Machine exclusions, so it’s no surprise that changes to a directory excluded from backup would still result in snapshots, but that does not change the fact that &lt;em&gt;this should not happen&lt;/em&gt;. There should be no circumstance in which a file transfer that should leave 70GB of free disk space instead results in the system becoming so full that it’s borderline inoperable.&lt;/p&gt;
+&lt;p&gt;So now I’m in a bit of a dilemma. I’ve long worked under the “two is one, one is none” mantra for backups, with one on-site and one off-. But I trust Time Machine so little now that I’m not even sure it &lt;em&gt;would&lt;/em&gt; successfully recover my data if I needed it to. Maybe time to finally give Carbon Copy Cloner or SuperDuper a try.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Network woes with my Raspberry Pi media server</title>
     <link href="https://barlow.dev/posts/network-woes-with-raspberry-pi/"/>
