@@ -4,13 +4,28 @@
   <subtitle>A blog about programming and whatever else irks me enough to write about.</subtitle>
   <link href="https://barlow.dev/feed.xml" rel="self"/>
   <link href="https://barlow.dev"/>
-  <updated>2024-05-24T22:10:27Z</updated>
+  <updated>2025-01-03T17:59:58Z</updated>
   <icon>https://barlow.dev/img/favicon.png</icon>
   <id>https://barlow.dev</id>
   <author>
     <name>Matt Barlow</name>
     <email></email>
   </author>
+  <entry>
+    <title>Aura Carver mini review</title>
+    <link href="https://barlow.dev/posts/aura-carver-mini-review/"/>
+    <updated>2025-01-03T17:59:58Z</updated>
+    <id>https://barlow.dev/posts/aura-carver-mini-review/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;&lt;img src=&quot;https://barlow.dev/img/aura.jpeg&quot; alt=&quot;A photo of the Aura Carver digital photo frame, showing a photo of me, my wife, and our dog at a Christmas Day Parkrun. The frame is perched atop an admittedly overcrowded half-height bookcase. There are two Christmas-themed rubber ducks in front of it, though I&#39;m not sure why.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Before Christmas, my wife mentioned it&#39;d be cool to get a digital photo frame to put some of the many, many photos we both take on display, instead of locked away on our phones. Both our phones do the &amp;quot;memories&amp;quot; thing, but they&#39;re never really &lt;em&gt;on display&lt;/em&gt; anywhere.&lt;/p&gt;
+&lt;p&gt;A week later I was listening to &lt;a href=&quot;https://atp.fm/&quot;&gt;ATP&lt;/a&gt; and one of the sponsors was &lt;a href=&quot;https://auraframes.co.uk/&quot;&gt;Aura&lt;/a&gt;. They&#39;re far, &lt;em&gt;far&lt;/em&gt; from the cheapest digital photo frame out there, but it was a reasonable price for the Carver (their smallest unit, at 10.1&amp;quot;) and the hosts were waxing effusive about them, so I grabbed one as a Christmas gift.&lt;/p&gt;
+&lt;p&gt;It&#39;s really great! There&#39;s a lot to like about it. The screen is bright and sharp with, at least to my eye, very good colour reproduction. 1280x800 on a 10&amp;quot; display doesn&#39;t sound like all that much these days, but from a typical distance you might look at a picture frame, it&#39;s plenty. The display is matte so you won&#39;t get any glaring reflections, and there is very little off-axis colour shifting if you&#39;re looking at it from different places in the room. It also automatically turns off when the room is dark, so when I turn out the lights to watch a movie it&#39;s not distracting.&lt;/p&gt;
+&lt;p&gt;One thing I didn&#39;t realise until it was up and running is that it support Apple&#39;s Live Photos, so you get a little bit of animation as the photos scroll in. Nice touch!&lt;/p&gt;
+&lt;p&gt;The setup experience was smooth and their app is pretty nice. If you buy it as a gift, you&#39;re able to scan a QR code on the box and upload some initial photos as well as a welcome message, meaning as soon as it connects to Wi-Fi it&#39;s already up and running. One minor gripe is that they evidently sold more of these things than they were expecting and their backend went down on Christmas Day, leaving us unable to add more photos. The frame itself kept working, at least.&lt;/p&gt;
+&lt;p&gt;That brings me onto my only real concern about this device, which is its cloud-based nature. For one, because it involves uploading our photos to a third-party—though unless I want to manage a USB drive of files, I don&#39;t really see how else it could work. An option to point it at my NAS would be awesome, but I completely understand why they wouldn&#39;t implement that for the 0.01% of nerds that would use it. For two, Aura promises free unlimited storage forever, which feels ripe for eventual enshittification if things get tough for them—or if they ever sell to a less scrupulous company. But hey, if that ever happens maybe someone will jailbreak the thing.&lt;/p&gt;
+&lt;p&gt;That aside, it&#39;s a lovely thing to have in the house. I&#39;ve turned off the notifications that tell me when my wife has added new photos, because it&#39;s just such a delight to see new stuff pop up on it.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Modern software has no respect for disk space</title>
     <link href="https://barlow.dev/posts/modern-software-has-no-respect-for-disk-space/"/>
