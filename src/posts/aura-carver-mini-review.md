@@ -14,7 +14,7 @@ A week later I was listening to [ATP](https://atp.fm) and one of the sponsors wa
 
 It's really great! There's a lot to like about it. The screen is bright and sharp with, at least to my eye, very good colour reproduction. 1280x800 on a 10" display doesn't sound like all that much these days, but from a typical distance you might look at a picture frame, it's plenty. The display is matte so you won't get any glaring reflections, and there is very little off-axis colour shifting if you're looking at it from different places in the room. It also automatically turns off when the room is dark, so when I turn out the lights to watch a movie it's not distracting.
 
-One thing I didn't realise until it was up and running is that it support Apple's Live Photos, so you get a little bit of animation as the photos scroll in. Nice touch!
+One thing I didn't realise until it was up and running is that it supports Apple's Live Photos, so you get a little bit of animation as the photos scroll in. Nice touch!
 
 The setup experience was smooth and their app is pretty nice. If you buy it as a gift, you're able to scan a QR code on the box and upload some initial photos as well as a welcome message, meaning as soon as it connects to Wi-Fi it's already up and running. One minor gripe is that they evidently sold more of these things than they were expecting and their backend went down on Christmas Day, leaving us unable to add more photos. The frame itself kept working, at least.
 
