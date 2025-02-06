@@ -4,13 +4,32 @@
   <subtitle>A blog about programming and whatever else irks me enough to write about.</subtitle>
   <link href="https://barlow.dev/feed.xml" rel="self"/>
   <link href="https://barlow.dev"/>
-  <updated>2025-01-04T18:28:35Z</updated>
+  <updated>2025-02-06T22:09:35Z</updated>
   <icon>https://barlow.dev/img/favicon.png</icon>
   <id>https://barlow.dev</id>
   <author>
     <name>Matt Barlow</name>
     <email></email>
   </author>
+  <entry>
+    <title>Completing Advent of Code for the first and probably last time</title>
+    <link href="https://barlow.dev/posts/advent-of-code-2024/"/>
+    <updated>2025-02-06T22:09:35Z</updated>
+    <id>https://barlow.dev/posts/advent-of-code-2024/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;&lt;img src=&quot;https://barlow.dev/img/advent_of_code_2024.png&quot; alt=&quot;A screenshot of a complete Advent of Code 2024. A large ASCII-art number 10 is filled with various Christmas-themed patterns.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;I completed Advent of Code for the first time. I&#39;m probably not gonna do it again.&lt;/p&gt;
+&lt;p&gt;Am I glad I did it...I think I am? There were certainly a lot of times where I regretted my stubbornness and should have stopped, and it&#39;s safe to say that overall the time I spent on it came nowhere close to offsetting what fun and satisfaction I did get from solving the puzzles.&lt;/p&gt;
+&lt;p&gt;This is all a &amp;quot;me&amp;quot; problem, of course. The amount of effort that must go into this every year, across such a wide range of subject matters, is staggering. I have a lot of respect for Eric Wastl and everyone involved in creating and running these.&lt;/p&gt;
+&lt;p&gt;It just took me &lt;em&gt;so&lt;/em&gt; much time to do. I didn&#39;t time myself, but I think 100 hours total is probably a fair estimate. I don&#39;t think I have a healthy relationship with this kind of thing. Even though I wasn&#39;t competing with anyone, I really felt a need to prove to myself that I could do it, and while in the end I &lt;em&gt;could&lt;/em&gt;, it came at the expense of neglecting all my other hobbies. The books are piling up and those last fifteen or so poor Astro Bots are still awaiting rescue.&lt;/p&gt;
+&lt;p&gt;I will give myself some small credit at least: while I needed pointers from the &lt;a href=&quot;https://www.reddit.com/r/adventofcode/&quot;&gt;/r/AdventofCode&lt;/a&gt; subreddit on a fair number of the puzzles (and full, step-by-step explanations of a few), I never looked at anyone else&#39;s code until I had a working solution myself, and I never submitted a correct answer without fully understanding my solution and why it worked.&lt;/p&gt;
+&lt;p&gt;It&#39;s not all gloom though, there are some definite positives I got out of it.&lt;/p&gt;
+&lt;p&gt;Last year (my first attempt) I chose Clojure and gave up around day 15—Lisps are very cool and something I want to explore more, but trying to solve tricky puzzles in a language so different to any programming I&#39;d ever done before was a bit much. This year I chose Swift—a language which I am very fond of but never get to use at work and so have little practical experience with—and I feel like I finished with a much better understanding of it and an eagerness to do more. Particularly devious puzzles notwithstanding, I felt myself speeding up in the back third because I was spending far less time hunting down dumb mistakes in my code and better utilising what the language offers.&lt;/p&gt;
+&lt;p&gt;I also got to solve the sorts of computer science-y problems that you rarely see in many web development roles and that, realistically, I haven&#39;t encountered much since university. At work I&#39;ve optimised plenty of functions, decimated query runtimes, and delivered lots of features without upsetting an established codebase. To date, I&#39;ve never had to implement a pathfinding algorithm or identify the errors in a simulated 46-bit full adder in a professional context. More&#39;s the pity.&lt;/p&gt;
+&lt;p&gt;That brings me onto my only real disagreement with how AoC is presented: the claim on &lt;a href=&quot;https://adventofcode.com/2024/about&quot;&gt;the About page&lt;/a&gt; that &amp;quot;a little programming knowledge and some problem solving skills will get you pretty far&amp;quot;. Personally, I find this to be highly unrealistic and will set a lot of people up for disappointment. I accept that it&#39;s a challenge for all skill levels, but if you don&#39;t have a basic familiarity with certain aspects of computer science and/or maths—graph traversal, dynamic programming, memoisation to name just a few—you are very unlikely to be able to solve many of the puzzles at all.&lt;/p&gt;
+&lt;p&gt;In many ways it&#39;s not unlike cryptic crosswords: what appears to be indecipherable nonsense is actually a well-defined set of rules and patterns that those in the know can spot. And while I&#39;m sure you &lt;em&gt;could&lt;/em&gt; work it out without knowing those rules, you&#39;re about as likely to as you are to invent Dijkstra&#39;s algorithm from first principles.&lt;/p&gt;
+&lt;p&gt;Anyway, this post only has one real purpose: if you&#39;re reading this, December 2025 Matt, just play the damn videogames and enjoy your Christmas break.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>GenAI and papering over inefficiency</title>
     <link href="https://barlow.dev/posts/gen-ai-papering-over-inefficiency/"/>

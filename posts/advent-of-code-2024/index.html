@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <!-- Feels like these should be CSS properties but okay -->
+    <meta name="theme-color" content="rgb(243, 244, 246)" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="rgb(55, 65, 81)" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="barlow.dev" />
+    <meta property="og:url" content="https://barlow.dev/posts/advent-of-code-2024/" />
+    <meta property="og:title" content="Completing Advent of Code for the first and probably last time - barlow.dev" />
+    <meta property="og:type" content="blog" />
+    
+    <meta property="og:description" content="Why did I do this to myself?" />
+    <meta name="description" content="Why did I do this to myself?" />
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/prism-one-light.css" />
+    <link rel="stylesheet" href="/css/prism-material-oceanic.css" />
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link rel="canonical" href="https://barlow.dev/posts/advent-of-code-2024/" />
+    <link rel="alternate" type="application/atom+xml" href="https://barlow.dev/feed.xml" title="RSS Feed" />
+
+    <title>Completing Advent of Code for the first and probably last time - barlow.dev</title>
+  </head>
+
+  <body
+    class="mx-auto grid min-h-dvh max-w-prose grid-cols-layout grid-rows-layout px-safe-offset-4 md:px-0 dark:bg-gray-800"
+  >
+    <nav class="mt-4 flex items-center justify-between dark:prose-invert">
+      <a href="/" title="Home">
+        <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
+      </a>
+      <div class="space-x-2 sm:space-x-4">
+        <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
+        <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
+        <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
+      </div>
+    </nav>
+
+    <main class="mb-12 mt-8">
+<article>
+  <section class="prose dark:prose-invert">
+    <h1 class="header-background">Completing Advent of Code for the first and probably last time</h1>
+    
+    <h4>Why did I do this to myself?</h4>
+    
+
+    <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
+      <p>3 minute read &bull; 6th Feb 2025</p>
+
+      <div class="flex flex-wrap text-xs">
+        
+        <a
+          href="/tags/programming/"
+          title="See all posts tagged 'programming'"
+          class="mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-hard shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >programming</a
+        >
+        
+        <a
+          href="/tags/self/"
+          title="See all posts tagged 'self'"
+          class="mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-hard shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
+          >self</a
+        >
+        
+      </div>
+    </aside>
+  </section>
+
+  <section class="prose prose-indigo mt-12 dark:prose-invert"><p><img src="/img/advent_of_code_2024.png" alt="A screenshot of a complete Advent of Code 2024. A large ASCII-art number 10 is filled with various Christmas-themed patterns."></p>
+<p>I completed Advent of Code for the first time. I'm probably not gonna do it again.</p>
+<p>Am I glad I did it...I think I am? There were certainly a lot of times where I regretted my stubbornness and should have stopped, and it's safe to say that overall the time I spent on it came nowhere close to offsetting what fun and satisfaction I did get from solving the puzzles.</p>
+<p>This is all a &quot;me&quot; problem, of course. The amount of effort that must go into this every year, across such a wide range of subject matters, is staggering. I have a lot of respect for Eric Wastl and everyone involved in creating and running these.</p>
+<p>It just took me <em>so</em> much time to do. I didn't time myself, but I think 100 hours total is probably a fair estimate. I don't think I have a healthy relationship with this kind of thing. Even though I wasn't competing with anyone, I really felt a need to prove to myself that I could do it, and while in the end I <em>could</em>, it came at the expense of neglecting all my other hobbies. The books are piling up and those last fifteen or so poor Astro Bots are still awaiting rescue.</p>
+<p>I will give myself some small credit at least: while I needed pointers from the <a href="https://www.reddit.com/r/adventofcode/">/r/AdventofCode</a> subreddit on a fair number of the puzzles (and full, step-by-step explanations of a few), I never looked at anyone else's code until I had a working solution myself, and I never submitted a correct answer without fully understanding my solution and why it worked.</p>
+<p>It's not all gloom though, there are some definite positives I got out of it.</p>
+<p>Last year (my first attempt) I chose Clojure and gave up around day 15—Lisps are very cool and something I want to explore more, but trying to solve tricky puzzles in a language so different to any programming I'd ever done before was a bit much. This year I chose Swift—a language which I am very fond of but never get to use at work and so have little practical experience with—and I feel like I finished with a much better understanding of it and an eagerness to do more. Particularly devious puzzles notwithstanding, I felt myself speeding up in the back third because I was spending far less time hunting down dumb mistakes in my code and better utilising what the language offers.</p>
+<p>I also got to solve the sorts of computer science-y problems that you rarely see in many web development roles and that, realistically, I haven't encountered much since university. At work I've optimised plenty of functions, decimated query runtimes, and delivered lots of features without upsetting an established codebase. To date, I've never had to implement a pathfinding algorithm or identify the errors in a simulated 46-bit full adder in a professional context. More's the pity.</p>
+<p>That brings me onto my only real disagreement with how AoC is presented: the claim on <a href="https://adventofcode.com/2024/about">the About page</a> that &quot;a little programming knowledge and some problem solving skills will get you pretty far&quot;. Personally, I find this to be highly unrealistic and will set a lot of people up for disappointment. I accept that it's a challenge for all skill levels, but if you don't have a basic familiarity with certain aspects of computer science and/or maths—graph traversal, dynamic programming, memoisation to name just a few—you are very unlikely to be able to solve many of the puzzles at all.</p>
+<p>In many ways it's not unlike cryptic crosswords: what appears to be indecipherable nonsense is actually a well-defined set of rules and patterns that those in the know can spot. And while I'm sure you <em>could</em> work it out without knowing those rules, you're about as likely to as you are to invent Dijkstra's algorithm from first principles.</p>
+<p>Anyway, this post only has one real purpose: if you're reading this, December 2025 Matt, just play the damn videogames and enjoy your Christmas break.</p>
+</section>
+</article>
+</main>
+
+    <footer class="footer-background pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
+      <nav class="flex items-center justify-around">
+        <a rel="me" href="https://mastodon.social/@mpbarlow" target="_blank" title="Toot me on Mastodon" class="group">
+  <img
+    src="/img/mastodon.png"
+    srcset="/img/mastodon_2x.png 2x, /img/mastodon_3x.png 3x"
+    alt="A pixel art elephant bearing the Mastodon logo"
+    class="h-[64px] w-[64px] group-hover:hidden"
+  />
+  <img
+    src="/img/mastodon_selected.png"
+    srcset="/img/mastodon_selected_2x.png 2x, /img/mastodon_selected_3x.png 3x"
+    alt="A pixel art elephant bearing the Mastodon logo"
+    class="hidden h-[64px] w-[64px] group-hover:inline"
+  />
+</a>
+ <a href="https://www.instagram.com/mattpbarlow" target="_blank" title="Dog pix" class="group">
+  <img
+    src="/img/instagram.png"
+    srcset="/img/instagram_2x.png 2x, /img/instagram_3x.png 3x"
+    alt="A pixel art iPhone taking a photo of the Instagram logo"
+    class="h-[64px] w-[64px] group-hover:hidden"
+  />
+  <img
+    src="/img/instagram_selected.png"
+    srcset="/img/instagram_selected_2x.png 2x, /img/instagram_selected_3x.png 3x"
+    alt="A pixel art iPhone taking a photo of the Instagram logo"
+    class="hidden h-[64px] w-[64px] group-hover:inline"
+  />
+</a>
+ <a href="https://github.com/mpbarlow" target="_blank" title="Fork me on GitHub" class="group">
+  <img
+    src="/img/github.png"
+    srcset="/img/github_2x.png 2x, /img/github_3x.png 3x"
+    alt="A pixel art MacBook displaying the Git logo"
+    class="h-[64px] w-[64px] group-hover:hidden"
+  />
+  <img
+    src="/img/github_selected.png"
+    srcset="/img/github_selected_2x.png 2x, /img/github_selected_3x.png 3x"
+    alt="A pixel art MacBook displaying the Git logo"
+    class="hidden h-[64px] w-[64px] group-hover:inline"
+  />
+</a>
+
+      </nav>
+      <p class="mt-8">&copy; MMXXV Matt Barlow</p>
+    </footer>
+  </body>
+</html>
