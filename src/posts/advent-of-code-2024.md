@@ -11,7 +11,7 @@ post_tags:
 
 I completed Advent of Code for the first time. I'm probably not gonna do it again.
 
-Am I glad I did it...I think I am? There were certainly a lot of times where I regretted my stubbornness and should have stopped, and it's safe to say that overall the time I spent on it came nowhere close to offsetting what fun and satisfaction I did get from solving the puzzles.
+Am I glad I did it...I think I am? There were certainly a lot of times where I regretted my stubbornness and should have stopped, and it's safe to say that overall what fun and satisfaction I did get from solving the puzzles came nowhere close to offsetting the time I spent on it.
 
 This is all a "me" problem, of course. The amount of effort that must go into this every year, across such a wide range of subject matters, is staggering. I have a lot of respect for Eric Wastl and everyone involved in creating and running these.
 
