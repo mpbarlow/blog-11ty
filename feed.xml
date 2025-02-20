@@ -4,13 +4,25 @@
   <subtitle>A blog about programming and whatever else irks me enough to write about.</subtitle>
   <link href="https://barlow.dev/feed.xml" rel="self"/>
   <link href="https://barlow.dev"/>
-  <updated>2025-02-06T22:09:35Z</updated>
+  <updated>2025-02-20T13:01:22Z</updated>
   <icon>https://barlow.dev/img/favicon.png</icon>
   <id>https://barlow.dev</id>
   <author>
     <name>Matt Barlow</name>
     <email></email>
   </author>
+  <entry>
+    <title>Link: Ed Zitron - What We&#39;re Fighting For</title>
+    <link href="https://barlow.dev/posts/link-ed-zitron-what-were-fighting-for/"/>
+    <updated>2025-02-20T13:01:22Z</updated>
+    <id>https://barlow.dev/posts/link-ed-zitron-what-were-fighting-for/</id>
+    <content xml:lang="en" type="html">&lt;blockquote&gt;
+&lt;p&gt;The reason I&#39;m so onerously explaining this is that I do not believe the majority of people hate technology, but what the technology industry has become in search of growth. In fact, I&#39;d argue that deep down, many people love technology — we love that we can instantly connect to friends using little computers in our pockets, or that we can share photos or videos with effectively anyone with an internet connection. As &amp;quot;one of big tech&#39;s angriest critics,&amp;quot; I must confess I absolutely love what I can do with the computer, as deep down I&#39;m a brokenhearted romantic that can see, beneath all the slop, growth and bullshit are many, many things I truly, deeply love.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It&#39;s a long read, but god damn. It sums up exactly the sadness and loathing I feel about modern software.&lt;/p&gt;
+&lt;p&gt;🔗: &lt;a href=&quot;https://www.wheresyoured.at/what-were-fighting-for/&quot;&gt;https://www.wheresyoured.at/what-were-fighting-for/&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Completing Advent of Code for the first and probably last time</title>
     <link href="https://barlow.dev/posts/advent-of-code-2024/"/>
