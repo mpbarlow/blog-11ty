@@ -4,13 +4,24 @@
   <subtitle>A blog about programming and whatever else irks me enough to write about.</subtitle>
   <link href="https://barlow.dev/feed.xml" rel="self"/>
   <link href="https://barlow.dev"/>
-  <updated>2025-02-20T13:01:22Z</updated>
+  <updated>2025-02-21T19:38:40Z</updated>
   <icon>https://barlow.dev/img/favicon.png</icon>
   <id>https://barlow.dev</id>
   <author>
     <name>Matt Barlow</name>
     <email></email>
   </author>
+  <entry>
+    <title>Apple pulls Advanced Data Protection in the UK</title>
+    <link href="https://barlow.dev/posts/apple-pulls-adp-in-uk/"/>
+    <updated>2025-02-21T19:38:40Z</updated>
+    <id>https://barlow.dev/posts/apple-pulls-adp-in-uk/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;🔗: &lt;a href=&quot;https://www.bbc.co.uk/news/articles/cgj54eq4vejo&quot;&gt;https://www.bbc.co.uk/news/articles/cgj54eq4vejo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Realistically this is the only thing they really could have done. My understanding is that while the Snooper&#39;s Charter allows for appeal, parties issued a technical capability notice must still begin work on implementing a backdoor while any appeal is ongoing. I&#39;ve read much rumbling on Mastodon that this is another example of Apple rolling over at the first provocation, but this law is so insidious that real people working for Apple in the UK could face real consequences if they attempted to dig their heels in.&lt;/p&gt;
+&lt;p&gt;It&#39;s actually entirely possible that the UK government might still intend to enforce this notice for access to the data of the users who already have ADP enabled, and this is Apple&#39;s attempt at limiting the number of people believing themselves to be secure who in fact will shortly not be. Alternatively, the government may have accepted this as a good-enough outcome that avoids the inevitable conflict with other laws internationally (not least of all the EU and the US).&lt;/p&gt;
+&lt;p&gt;Once again, I am ashamed to be British. In recent history Labour have never been any better than the Tories when it comes to authoritarianism and paternalistic traits. The enforced secrecy is what I find most galling of all: at least have the decency to look us in the eye while you fuck us.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Link: Ed Zitron - What We&#39;re Fighting For</title>
     <link href="https://barlow.dev/posts/link-ed-zitron-what-were-fighting-for/"/>
