@@ -4,13 +4,32 @@
   <subtitle>A blog about programming and whatever else irks me enough to write about.</subtitle>
   <link href="https://barlow.dev/feed.xml" rel="self"/>
   <link href="https://barlow.dev"/>
-  <updated>2025-04-09T22:40:17Z</updated>
+  <updated>2025-09-07T13:35:00Z</updated>
   <icon>https://barlow.dev/img/favicon.png</icon>
   <id>https://barlow.dev</id>
   <author>
     <name>Matt Barlow</name>
     <email></email>
   </author>
+  <entry>
+    <title>Oh Mazda, what are you doing?</title>
+    <link href="https://barlow.dev/posts/oh-mazda-what-are-you-doing/"/>
+    <updated>2025-09-07T13:35:00Z</updated>
+    <id>https://barlow.dev/posts/oh-mazda-what-are-you-doing/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;I love our 2022 Mazda3. It looks fantastic, it’s fun to drive, and it’s pretty efficient as combustion cars go. But most of all, I love it because it feels like one of the last bastions of sanity in the modern car world.&lt;/p&gt;
+&lt;p&gt;The only software I need to directly interact with is the little rectangle that shows what’s on my phone, and even that is controlled via a physical dial and buttons.&lt;/p&gt;
+&lt;p&gt;The climate control is managed by two knobs and a handful of buttons, with a tasteful segmented display to show its current status. All of it is intuitive and, once familiar with the car, can be used without taking eyes off the road.&lt;/p&gt;
+&lt;p&gt;The instrument cluster is composed of two real dial sets for revs, oil temperature, and fuel, flanking a small central screen—made to look like a dial for the speedo, but with a few additional pieces of info like the current gear, cruise control, and anything in my blindspots. A small HUD displaying speed means even less reason to take my eyes off the road.&lt;/p&gt;
+&lt;p&gt;The buttons on my steering wheel are, again, all physical and can therefore be operated by feel alone and with very little risk of accidental engagement when handling the wheel.&lt;/p&gt;
+&lt;p&gt;The car has various ADAS features should you want them; but, being manufactured pre-2024, they are not forced back upon you every time you start the car. It will read speed limit signs, but it will not incessantly bong at you if it believes you to be 1mph over the limit. Nor will it issue distracting chimes and visual alerts…because it thinks you’re distracted. (It &lt;em&gt;will&lt;/em&gt; occasionally try to steer you into a kerb or suddenly scream at you to brake because the collision avoidance system is confused, but again, predating the absurd legal requirement for that stuff to automatically re-enable itself, you can just turn it off.)&lt;/p&gt;
+&lt;p&gt;Mazda’s approach could uncharitably be called outdated, but I’m here for it. Controls designed to serve the driver, rather than saving pennies on switchgear. Large displacement (relative to the power), naturally aspirated engines instead of tiny, high-strung turbocharged units. Manuals are still widely available across the range, and while the 6-speed torque converter in our car is the only automatic I’ve ever driven, giving me no basis for comparison, I also have no complaints. Providing finances permit it in the near future, there is a Soul Red Crystal ND MX-5 somewhere out there with my name on it.&lt;/p&gt;
+&lt;p&gt;Which, of course, makes it all the more disappointing that &lt;a href=&quot;https://www.autocar.co.uk/car-news/new-cars/new-mazda-cx-5-gets-fresh-look-and-practicality-boost&quot;&gt;the new CX-5&lt;/a&gt; removes the majority of physical controls in favour of—you guessed it—a massive touch screen. The buttons on the wheel are still physical which is a mercy, but they are of the crappy multi-directional rocker kind, rather than individual buttons. The last bastion is falling.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;He added that customisation – for example, the ability to add widgets to the homescreen – was another reason for the change and another key request by owners. “Customers are crazy for that,” said Schultze.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I would just shorten that to “customers are crazy”.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>iPhone 16 case comparison: Apple clear case vs Beats case</title>
     <link href="https://barlow.dev/posts/iphone-16-case-comparison/"/>
