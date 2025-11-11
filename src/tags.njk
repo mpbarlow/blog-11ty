@@ -3,14 +3,14 @@ layout: layout.njk
 title: "Post tags"
 ---
 
-<section class="prose prose-indigo dark:prose-invert">
-  <h1 class="header-background">{{ title }}</h1>
-</section>
+<header>
+  <h1>{{ title }}</h1>
+</header>
 
-<section class="prose prose-indigo mt-12 dark:prose-invert">
+<article>
   <ul>
     {% for tag in collections.posts | extractTags | sort %}
     <li><a href="/tags/{{ tag | slug }}/">{{ tag }}</a> ({{ collections.posts | filterByTag(tag) | length }})</li>
     {% endfor %}
   </ul>
-</section>
+</article>

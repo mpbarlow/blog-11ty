@@ -1,0 +1,132 @@
+@font-face {
+  font-family: "InstrumentSerif";
+  src: url("/font/InstrumentSerif-Regular.ttf");
+}
+
+@font-face {
+  font-family: "FiraSans";
+  src: url("/font/FiraSans-Light.ttf");
+}
+
+:root {
+  /*
+  Colours are from the Tailwind default palette. I'm not using Tailwind anymore but the colours are nice and well
+  considered. https://tailwindcss.com/docs/colors
+  */
+  color-scheme: light dark;
+
+  --bg-color-light: oklch(98.7% 0.026 102.212);
+  --bg-color-dark: oklch(35.9% 0.144 278.697);
+
+  --font-color-light: oklch(37.4% 0.01 67.558);
+  --font-color-dark: oklch(98.5% 0.001 106.423);
+
+  --link-color-light: oklch(42.1% 0.095 57.708);
+  --link-color-dark: oklch(87% 0.065 274.039);
+
+  --font-face-headings: "InstrumentSerif", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-face-body: "FiraSans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-face-mono: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --line-height: 1.75;
+  --embedded-content-border-radius: 0.75rem;
+}
+
+body {
+  margin: 1rem auto;
+  padding-inline: 1rem;
+
+  max-width: 65ch;
+
+  background-color: light-dark(var(--bg-color-light), var(--bg-color-dark));
+  color: light-dark(var(--font-color-light), var(--font-color-dark));
+
+  font-family: var(--font-face-body);
+}
+
+a {
+  color: light-dark(var(--link-color-light), var(--link-color-dark));
+  text-underline-offset: 0.125rem;
+}
+
+#header-links {
+  display: flex;
+  justify-content: space-between;
+
+  font-variant: small-caps;
+}
+
+header {
+  margin-block: 4rem;
+}
+
+footer {
+  margin-block: 4rem 1rem;
+
+  p {
+    text-align: center;
+    font-size: 0.875rem;
+  }
+}
+
+#all-post-links {
+  margin-block: 2rem;
+
+  text-align: center;
+  font-variant: small-caps;
+}
+
+#social-links {
+  margin-block: 2rem;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-icon-link {
+  text-decoration: none;
+
+  img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .footer-icon-selected {
+    display: none;
+  }
+
+  &:hover {
+    .footer-icon {
+      display: none;
+    }
+
+    .footer-icon-selected {
+      display: initial;
+    }
+  }
+}
+
+h1,
+h2 {
+  font-family: var(--font-face-headings);
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p,
+li {
+  line-height: var(--line-height);
+}
+
+main img {
+  max-width: 100%;
+  border-radius: var(--embedded-content-border-radius);
+}

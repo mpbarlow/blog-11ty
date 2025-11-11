@@ -1,29 +1,25 @@
 ---
 layout: layout.njk
+stylesheets: ["post", "prism"]
 ---
 
 <article>
-  <section class="prose dark:prose-invert">
-    <h1 class="header-background">{{ title }}</h1>
+  <header>
+    <h1>{{ title }}</h1>
     {% if description %}
     <h4>{{ description }}</h4>
     {% endif %}
 
-    <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
-      <p>{{ content | textOnly | wordcount | readingTime }} read &bull; {{ date | postDate }}</p>
+    <aside>
+      <p>{{ date | postDate }} &bull; {{ content | textOnly | wordcount | readingTime }} read</p>
 
-      <div class="flex flex-wrap text-xs">
-        {% for tag in post_tags | sort %}
-        <a
-          href="/tags/{{ tag | slug }}/"
-          title="See all posts tagged '{{ tag }}'"
-          class="mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-hard shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
-          >{{ tag }}</a
-        >
+      <p id="tag-list">
+        Tags: {% for tag in post_tags | sort %}
+        <a href="/tags/{{ tag | slug }}/" title="See all posts tagged '{{ tag }}'">{{ tag }}</a>
         {% endfor %}
-      </div>
+      </p>
     </aside>
-  </section>
+  </header>
 
-  <section class="prose prose-indigo mt-12 dark:prose-invert">{{ content | safe }}</section>
+  <section>{{ content | safe }}</section>
 </article>

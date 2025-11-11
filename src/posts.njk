@@ -3,11 +3,11 @@ layout: layout.njk
 title: "All posts"
 ---
 
-<section class="prose prose-indigo dark:prose-invert">
-  <h1 class="header-background">{{ title }}</h1>
-</section>
+<header>
+  <h1>{{ title }}</h1>
+</header>
 
-<section class="prose prose-indigo mt-12 dark:prose-invert">
+<article>
   {% for group, posts in collections.posts | reverse | groupByYearMonth %}
   <h3>{{ group }}</h3>
   <ul>
@@ -18,4 +18,4 @@ title: "All posts"
     {% endfor %}
   </ul>
   {% endfor %}
-</section>
+</article>

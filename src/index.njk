@@ -1,26 +1,29 @@
 ---
 layout: layout.njk
 title: "Home"
+stylesheets: ["index"]
 ---
 
-<section class="mb-8 flex flex-col items-start gap-y-4 sm:flex-row sm:items-center sm:gap-x-4 sm:gap-y-0">
+<header id="about-me">
   <img
     src="https://www.gravatar.com/avatar/f69faa2d58c63710b6ce0c9172d8d527?s=350"
     alt="A picture of me on the Headstone Viaduct on the Monsal Trail, Derbyshire, UK"
-    class="w-1/4 flex-shrink-0 rounded-full border-2 border-gray-200 dark:border-gray-600"
   />
-  <div class="prose prose-indigo dark:prose-invert">
-    <h1 class="header-background header-background-nudge">Hi. I'm Matt.</h1>
-    <p>I'm a software developer based in the UK. I work mostly with PHP, Python, Go, TypeScript, and Vue.</p>
+  <div>
+    <h1>Hi. I'm Matt.</h1>
+    <p>
+      I'm a software developer based in the UK. I work mostly with PHP, Python, Go, TypeScript, and Vue, but I'll
+      happily dabble in anything.
+    </p>
     <p>
       If you want to contact me,
       <a href="https://mastodon.social/@mpbarlow">toot me on Mastodon</a>.
     </p>
   </div>
-</section>
+</header>
 
-<section class="prose prose-indigo mt-12 dark:prose-invert">
-  <h2>Newest posts</h2>
+<section>
+  <h2>Latest posts</h2>
 
   {% for group, posts in collections.posts | recent | reverse | groupByYearMonth %}
   <h3>{{ group }}</h3>
@@ -32,8 +35,4 @@ title: "Home"
     {% endfor %}
   </ul>
   {% endfor %}
-</section>
-
-<section class="prose prose-indigo mt-8 dark:prose-invert">
-  <a href="/posts/">All posts</a> &bull; <a href="/tags/">By tag</a>
 </section>

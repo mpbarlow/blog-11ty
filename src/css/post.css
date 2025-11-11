@@ -1,0 +1,41 @@
+main {
+  --blockquote-color-light: oklch(44.4% 0.011 73.639);
+  --blockquote-color-dark: oklch(92.3% 0.003 48.717);
+
+  --blockquote-decoration-color-light: oklch(70.9% 0.01 56.259);
+  --blockquote-decoration-color-dark: oklch(86.9% 0.005 56.366);
+}
+
+header {
+  h4,
+  aside {
+    text-align: center;
+  }
+}
+
+figure {
+  margin-inline: 0;
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+  margin-block: 0.5rem;
+}
+
+blockquote {
+  font-style: italic;
+  color: light-dark(var(--blockquote-color-light), var(--blockquote-color-dark));
+}
+
+blockquote::before {
+  content: open-quote;
+  font-style: normal;
+  font-size: 6rem;
+
+  color: light-dark(var(--blockquote-decoration-color-light), var(--blockquote-decoration-color-dark));
+
+  position: absolute;
+  margin-left: -3rem;
+  margin-top: -0.875rem;
+}
