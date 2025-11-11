@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-    <!-- Feels like these should be CSS properties but okay -->
-    <meta name="theme-color" content="rgb(243, 244, 246)" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="rgb(55, 65, 81)" media="(prefers-color-scheme: dark)" />
-
+    <meta name="generator" content="Eleventy v3.1.2" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:site_name" content="barlow.dev" />
     <meta property="og:url" content="https://barlow.dev/posts/phpunits-data-providers-are-your-friend/" />
@@ -18,9 +15,12 @@
     <meta name="description" content="An introduction to PHPUnit Data Providers and the benefits they…provide" />
     
 
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/prism-one-light.css" />
-    <link rel="stylesheet" href="/css/prism-material-oceanic.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    
+    <link rel="stylesheet" href="/css/post.css" />
+    
+    <link rel="stylesheet" href="/css/prism.css" />
+    
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link rel="canonical" href="https://barlow.dev/posts/phpunits-data-providers-are-your-friend/" />
     <link rel="alternate" type="application/atom+xml" href="https://barlow.dev/feed.xml" title="RSS Feed" />
@@ -28,66 +28,40 @@
     <title>PHPUnit’s Data Providers are your friend - barlow.dev</title>
   </head>
 
-  <body
-    class="mx-auto grid min-h-dvh max-w-prose grid-cols-layout grid-rows-layout px-safe-offset-4 md:px-0 dark:bg-gray-800"
-  >
-    <nav class="mt-4 flex items-center justify-between dark:prose-invert">
-      <a href="/" title="Home">
-        <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
-      </a>
-      <div class="space-x-2 sm:space-x-4">
-        <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
-        <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
-        <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
-      </div>
+  <body>
+    <nav id="header-links">
+      <a href="/">Home</a>
+      <a href="/posts/">Posts</a>
+      <a href="/tags/">Tags</a>
+      <a href="/feed.xml">RSS</a>
     </nav>
 
-    <main class="mb-12 mt-8">
+    <main>
 <article>
-  <section class="prose dark:prose-invert">
-    <h1 class="header-background">PHPUnit’s Data Providers are your friend</h1>
+  <header>
+    <h1>PHPUnit’s Data Providers are your friend</h1>
     
     <h4>An introduction to PHPUnit Data Providers and the benefits they…provide</h4>
     
 
-    <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
-      <p>4 minute read &bull; 30th Jan 2024</p>
+    <aside>
+      <p>30th Jan 2024 &bull; 4 minute read</p>
 
-      <div class="flex flex-wrap text-xs">
+      <p id="tag-list">
+        Tags: 
+        <a href="/tags/php/" title="See all posts tagged 'php'">php</a>
         
-        <a
-          href="/tags/php/"
-          title="See all posts tagged 'php'"
-          class="mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-hard shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
-          >php</a
-        >
+        <a href="/tags/phpunit/" title="See all posts tagged 'phpunit'">phpunit</a>
         
-        <a
-          href="/tags/phpunit/"
-          title="See all posts tagged 'phpunit'"
-          class="mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-hard shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
-          >phpunit</a
-        >
+        <a href="/tags/programming/" title="See all posts tagged 'programming'">programming</a>
         
-        <a
-          href="/tags/programming/"
-          title="See all posts tagged 'programming'"
-          class="mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-hard shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
-          >programming</a
-        >
+        <a href="/tags/testing/" title="See all posts tagged 'testing'">testing</a>
         
-        <a
-          href="/tags/testing/"
-          title="See all posts tagged 'testing'"
-          class="mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-hard shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
-          >testing</a
-        >
-        
-      </div>
+      </p>
     </aside>
-  </section>
+  </header>
 
-  <section class="prose prose-indigo mt-12 dark:prose-invert"><p>For a while after I got serious about good test coverage, my tests would often end up quite sprawling, usually with only one assertion of any real value per test case.</p>
+  <section><p>For a while after I got serious about good test coverage, my tests would often end up quite sprawling, usually with only one assertion of any real value per test case.</p>
 <p>Since I started to lean more into PHPUnit’s <a href="https://phpunit.de/manual/3.7/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers">Data Providers</a>, my tests have become much simpler, and as a result easier to read, review, and maintain. Writing tests is usually not the hardest part of development of course, but I believe that reducing friction as much as possible naturally leads to better tests with more coverage.</p>
 <p>As a toy example, let’s say I’ve configured a route in a Laravel app to allow listing a new product in an e-commerce system. That route has validation that looks like this:</p>
 <pre class="language-php"><code class="language-php"><span class="token keyword">class</span> <span class="token class-name-definition class-name">CreateProductFormRequest</span> <span class="token keyword">extends</span> <span class="token class-name">FormRequest</span>
@@ -225,59 +199,66 @@
 <p>It’s not required to label the data sets (e.g. <code>'price &lt; 0'</code>), but it’s strongly recommended that you do, for two reasons. First, it makes it clear what you’re intending to test, which will assist reviewers and, undoubtedly, future-you. Secondly, if a test does fail, PHPUnit will print out the data set name in the error message, rather than a vague <code>data set #3</code>. I also like to include a brief comment noting the structure of the values as a bit of additional context, but this is just a personal preference of mine.</p>
 <p>Some might say that conditionally asserting success or failure is a bad idea, as you risk introducing logic errors into the <em>test</em> that could hide real problems with your application. Personally I find the “if expect-error then specific-failure, else success” pattern to be simple and low risk, but I can totally see the argument. You might instead opt to split your expected successes and failures into two separate test cases with two Data Providers.</p>
 <h2>A note on model factories</h2>
-<p>My examples above are based around Laravel, but if you try to use framework features like model factories in Data Providers, you're likely to run into somewhat cryptic errors about facade roots, because the Provider runs before the framework boots. Greg Mayes has an <a href="https://www.gregmayes.dev/posts/2024/02/03/using-laravel-model-factories-in-phpunit-data-providers/">excellent post on how to solve this</a> by wrapping the data in closures to delay execution.</p>
+<p>My examples above are based around Laravel, but if you try to use framework features like model factories in Data Providers, you’re likely to run into somewhat cryptic errors about facade roots, because the Provider runs before the framework boots. Greg Mayes has an <a href="https://www.gregmayes.dev/posts/2024/02/03/using-laravel-model-factories-in-phpunit-data-providers/">excellent post on how to solve this</a> by wrapping the data in closures to delay execution.</p>
 <p>And that’s really all there is to it! Data Providers aren’t a complex feature to use, but they can be a huge help in making tests with many permutations a lot more pleasant to write.</p>
 </section>
 </article>
 </main>
 
-    <footer class="footer-background pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
-      <nav class="flex items-center justify-around">
-        <a rel="me" href="https://mastodon.social/@mpbarlow" target="_blank" title="Toot me on Mastodon" class="group">
+    <footer>
+      <nav id="all-post-links"><a href="/posts/">All posts</a> &bull; <a href="/tags/">By tag</a></nav>
+      <nav id="social-links">
+        <a
+  rel="me"
+  href="https://mastodon.social/@mpbarlow"
+  target="_blank"
+  title="Toot me on Mastodon"
+  class="footer-icon-link"
+>
   <img
     src="/img/mastodon.png"
     srcset="/img/mastodon_2x.png 2x, /img/mastodon_3x.png 3x"
     alt="A pixel art elephant bearing the Mastodon logo"
-    class="h-[64px] w-[64px] group-hover:hidden"
+    class="footer-icon"
   />
   <img
     src="/img/mastodon_selected.png"
     srcset="/img/mastodon_selected_2x.png 2x, /img/mastodon_selected_3x.png 3x"
     alt="A pixel art elephant bearing the Mastodon logo"
-    class="hidden h-[64px] w-[64px] group-hover:inline"
+    class="footer-icon-selected"
   />
 </a>
- <a href="https://www.instagram.com/mattpbarlow" target="_blank" title="Dog pix" class="group">
+ <a href="https://www.instagram.com/mattpbarlow" target="_blank" title="Dog pix" class="footer-icon-link">
   <img
     src="/img/instagram.png"
     srcset="/img/instagram_2x.png 2x, /img/instagram_3x.png 3x"
     alt="A pixel art iPhone taking a photo of the Instagram logo"
-    class="h-[64px] w-[64px] group-hover:hidden"
+    class="footer-icon"
   />
   <img
     src="/img/instagram_selected.png"
     srcset="/img/instagram_selected_2x.png 2x, /img/instagram_selected_3x.png 3x"
     alt="A pixel art iPhone taking a photo of the Instagram logo"
-    class="hidden h-[64px] w-[64px] group-hover:inline"
+    class="footer-icon-selected"
   />
 </a>
- <a href="https://github.com/mpbarlow" target="_blank" title="Fork me on GitHub" class="group">
+ <a href="https://github.com/mpbarlow" target="_blank" title="Fork me on GitHub" class="footer-icon-link">
   <img
     src="/img/github.png"
     srcset="/img/github_2x.png 2x, /img/github_3x.png 3x"
     alt="A pixel art MacBook displaying the Git logo"
-    class="h-[64px] w-[64px] group-hover:hidden"
+    class="footer-icon"
   />
   <img
     src="/img/github_selected.png"
     srcset="/img/github_selected_2x.png 2x, /img/github_selected_3x.png 3x"
     alt="A pixel art MacBook displaying the Git logo"
-    class="hidden h-[64px] w-[64px] group-hover:inline"
+    class="footer-icon-selected"
   />
 </a>
 
       </nav>
-      <p class="mt-8">&copy; MMXXV Matt Barlow</p>
+      <p>&copy; MMXXV Matt Barlow</p>
     </footer>
   </body>
 </html>

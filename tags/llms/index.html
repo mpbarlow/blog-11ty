@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-    <!-- Feels like these should be CSS properties but okay -->
-    <meta name="theme-color" content="rgb(243, 244, 246)" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="rgb(55, 65, 81)" media="(prefers-color-scheme: dark)" />
-
+    <meta name="generator" content="Eleventy v3.1.2" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:site_name" content="barlow.dev" />
     <meta property="og:url" content="https://barlow.dev/tags/llms/" />
@@ -15,9 +12,8 @@
     <meta property="og:type" content="blog" />
     
 
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/prism-one-light.css" />
-    <link rel="stylesheet" href="/css/prism-material-oceanic.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link rel="canonical" href="https://barlow.dev/tags/llms/" />
     <link rel="alternate" type="application/atom+xml" href="https://barlow.dev/feed.xml" title="RSS Feed" />
@@ -25,26 +21,20 @@
     <title>Posts tagged &#39;llms&#39; - barlow.dev</title>
   </head>
 
-  <body
-    class="mx-auto grid min-h-dvh max-w-prose grid-cols-layout grid-rows-layout px-safe-offset-4 md:px-0 dark:bg-gray-800"
-  >
-    <nav class="mt-4 flex items-center justify-between dark:prose-invert">
-      <a href="/" title="Home">
-        <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
-      </a>
-      <div class="space-x-2 sm:space-x-4">
-        <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
-        <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
-        <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
-      </div>
+  <body>
+    <nav id="header-links">
+      <a href="/">Home</a>
+      <a href="/posts/">Posts</a>
+      <a href="/tags/">Tags</a>
+      <a href="/feed.xml">RSS</a>
     </nav>
 
-    <main class="mb-12 mt-8">
-<section class="prose prose-indigo dark:prose-invert">
-  <h1 class="header-background">Posts tagged 'llms'</h1>
-</section>
+    <main>
+<header>
+  <h1>Posts tagged 'llms'</h1>
+</header>
 
-<section class="prose prose-indigo mt-12 dark:prose-invert">
+<article>
   
   <h3>January 2025</h3>
   <ul>
@@ -55,56 +45,63 @@
     
   </ul>
   
-</section>
+</article>
 </main>
 
-    <footer class="footer-background pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
-      <nav class="flex items-center justify-around">
-        <a rel="me" href="https://mastodon.social/@mpbarlow" target="_blank" title="Toot me on Mastodon" class="group">
+    <footer>
+      <nav id="all-post-links"><a href="/posts/">All posts</a> &bull; <a href="/tags/">By tag</a></nav>
+      <nav id="social-links">
+        <a
+  rel="me"
+  href="https://mastodon.social/@mpbarlow"
+  target="_blank"
+  title="Toot me on Mastodon"
+  class="footer-icon-link"
+>
   <img
     src="/img/mastodon.png"
     srcset="/img/mastodon_2x.png 2x, /img/mastodon_3x.png 3x"
     alt="A pixel art elephant bearing the Mastodon logo"
-    class="h-[64px] w-[64px] group-hover:hidden"
+    class="footer-icon"
   />
   <img
     src="/img/mastodon_selected.png"
     srcset="/img/mastodon_selected_2x.png 2x, /img/mastodon_selected_3x.png 3x"
     alt="A pixel art elephant bearing the Mastodon logo"
-    class="hidden h-[64px] w-[64px] group-hover:inline"
+    class="footer-icon-selected"
   />
 </a>
- <a href="https://www.instagram.com/mattpbarlow" target="_blank" title="Dog pix" class="group">
+ <a href="https://www.instagram.com/mattpbarlow" target="_blank" title="Dog pix" class="footer-icon-link">
   <img
     src="/img/instagram.png"
     srcset="/img/instagram_2x.png 2x, /img/instagram_3x.png 3x"
     alt="A pixel art iPhone taking a photo of the Instagram logo"
-    class="h-[64px] w-[64px] group-hover:hidden"
+    class="footer-icon"
   />
   <img
     src="/img/instagram_selected.png"
     srcset="/img/instagram_selected_2x.png 2x, /img/instagram_selected_3x.png 3x"
     alt="A pixel art iPhone taking a photo of the Instagram logo"
-    class="hidden h-[64px] w-[64px] group-hover:inline"
+    class="footer-icon-selected"
   />
 </a>
- <a href="https://github.com/mpbarlow" target="_blank" title="Fork me on GitHub" class="group">
+ <a href="https://github.com/mpbarlow" target="_blank" title="Fork me on GitHub" class="footer-icon-link">
   <img
     src="/img/github.png"
     srcset="/img/github_2x.png 2x, /img/github_3x.png 3x"
     alt="A pixel art MacBook displaying the Git logo"
-    class="h-[64px] w-[64px] group-hover:hidden"
+    class="footer-icon"
   />
   <img
     src="/img/github_selected.png"
     srcset="/img/github_selected_2x.png 2x, /img/github_selected_3x.png 3x"
     alt="A pixel art MacBook displaying the Git logo"
-    class="hidden h-[64px] w-[64px] group-hover:inline"
+    class="footer-icon-selected"
   />
 </a>
 
       </nav>
-      <p class="mt-8">&copy; MMXXV Matt Barlow</p>
+      <p>&copy; MMXXV Matt Barlow</p>
     </footer>
   </body>
 </html>

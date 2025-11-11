@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-    <!-- Feels like these should be CSS properties but okay -->
-    <meta name="theme-color" content="rgb(243, 244, 246)" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="rgb(55, 65, 81)" media="(prefers-color-scheme: dark)" />
-
+    <meta name="generator" content="Eleventy v3.1.2" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:site_name" content="barlow.dev" />
     <meta property="og:url" content="https://barlow.dev/posts/aura-carver-mini-review/" />
@@ -15,9 +12,12 @@
     <meta property="og:type" content="blog" />
     
 
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/prism-one-light.css" />
-    <link rel="stylesheet" href="/css/prism-material-oceanic.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    
+    <link rel="stylesheet" href="/css/post.css" />
+    
+    <link rel="stylesheet" href="/css/prism.css" />
+    
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link rel="canonical" href="https://barlow.dev/posts/aura-carver-mini-review/" />
     <link rel="alternate" type="application/atom+xml" href="https://barlow.dev/feed.xml" title="RSS Feed" />
@@ -25,108 +25,99 @@
     <title>Aura Carver mini review - barlow.dev</title>
   </head>
 
-  <body
-    class="mx-auto grid min-h-dvh max-w-prose grid-cols-layout grid-rows-layout px-safe-offset-4 md:px-0 dark:bg-gray-800"
-  >
-    <nav class="mt-4 flex items-center justify-between dark:prose-invert">
-      <a href="/" title="Home">
-        <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
-      </a>
-      <div class="space-x-2 sm:space-x-4">
-        <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
-        <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
-        <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
-      </div>
+  <body>
+    <nav id="header-links">
+      <a href="/">Home</a>
+      <a href="/posts/">Posts</a>
+      <a href="/tags/">Tags</a>
+      <a href="/feed.xml">RSS</a>
     </nav>
 
-    <main class="mb-12 mt-8">
+    <main>
 <article>
-  <section class="prose dark:prose-invert">
-    <h1 class="header-background">Aura Carver mini review</h1>
+  <header>
+    <h1>Aura Carver mini review</h1>
     
 
-    <aside class="not-prose text-sm text-gray-600 dark:text-gray-300">
-      <p>2 minute read &bull; 3rd Jan 2025</p>
+    <aside>
+      <p>3rd Jan 2025 &bull; 2 minute read</p>
 
-      <div class="flex flex-wrap text-xs">
+      <p id="tag-list">
+        Tags: 
+        <a href="/tags/review/" title="See all posts tagged 'review'">review</a>
         
-        <a
-          href="/tags/review/"
-          title="See all posts tagged 'review'"
-          class="mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-hard shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
-          >review</a
-        >
+        <a href="/tags/tech/" title="See all posts tagged 'tech'">tech</a>
         
-        <a
-          href="/tags/tech/"
-          title="See all posts tagged 'tech'"
-          class="mr-1 mt-1 border border-gray-500 px-2 py-1 text-gray-500 shadow-hard shadow-gray-400 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-indigo-400 dark:border-gray-300 dark:text-gray-300 dark:shadow-gray-500 dark:hover:border-indigo-400 dark:hover:text-indigo-400 dark:hover:shadow-indigo-500"
-          >tech</a
-        >
-        
-      </div>
+      </p>
     </aside>
-  </section>
+  </header>
 
-  <section class="prose prose-indigo mt-12 dark:prose-invert"><p><img src="/img/aura.jpeg" alt="A photo of the Aura Carver digital photo frame, showing a photo of me, my wife, and our dog at a Christmas Day Parkrun. The frame is perched atop an admittedly overcrowded half-height bookcase. There are two Christmas-themed rubber ducks in front of it, though I'm not sure why."></p>
-<p>Before Christmas, my wife mentioned it'd be cool to get a digital photo frame to put some of the many, many photos we both take on display, instead of locked away on our phones. Both our phones do the &quot;memories&quot; thing, but they're never really <em>on display</em> anywhere.</p>
-<p>A week later I was listening to <a href="https://atp.fm">ATP</a> and one of the sponsors was <a href="https://auraframes.co.uk">Aura</a>. They're far, <em>far</em> from the cheapest digital photo frame out there, but it was a reasonable price for the Carver (their smallest unit, at 10.1&quot;) and the hosts were waxing effusive about them, so I grabbed one as a Christmas gift.</p>
-<p>It's really great! There's a lot to like about it. The screen is bright and sharp with, at least to my eye, very good colour reproduction. 1280x800 on a 10&quot; display doesn't sound like all that much these days, but from a typical distance you might look at a picture frame, it's plenty. The display is matte so you won't get any glaring reflections, and there is very little off-axis colour shifting if you're looking at it from different places in the room. It also automatically turns off when the room is dark, so when I turn out the lights to watch a movie it's not distracting.</p>
-<p>One thing I didn't realise until it was up and running is that it supports Apple's Live Photos, so you get a little bit of animation as the photos scroll in. Nice touch!</p>
-<p>The setup experience was smooth and their app is pretty nice. If you buy it as a gift, you're able to scan a QR code on the box and upload some initial photos as well as a welcome message, meaning as soon as it connects to Wi-Fi it's already up and running. One minor gripe is that they evidently sold more of these things than they were expecting and their backend went down on Christmas Day, leaving us unable to add more photos. The frame itself kept working, at least.</p>
-<p>That brings me onto my only real concern about this device, which is its cloud-based nature. For one, because it involves uploading our photos to a third-party—though unless I want to manage a USB drive of files, I don't really see how else it could work. An option to point it at my NAS would be awesome, but I completely understand why they wouldn't implement that for the 0.01% of nerds that would use it. For two, Aura promises free unlimited storage forever, which feels ripe for eventual enshittification if things get tough for them—or if they ever sell to a less scrupulous company. But hey, if that ever happens maybe someone will jailbreak the thing.</p>
-<p>That aside, it's a lovely thing to have in the house. I've turned off the notifications that tell me when my wife has added new photos, because it's just such a delight to see new stuff pop up on it.</p>
+  <section><p><img src="/img/aura.jpeg" alt="A photo of the Aura Carver digital photo frame, showing a photo of me, my wife, and our dog at a Christmas Day Parkrun. The frame is perched atop an admittedly overcrowded half-height bookcase. There are two Christmas-themed rubber ducks in front of it, though I’m not sure why."></p>
+<p>Before Christmas, my wife mentioned it’d be cool to get a digital photo frame to put some of the many, many photos we both take on display, instead of locked away on our phones. Both our phones do the “memories” thing, but they’re never really <em>on display</em> anywhere.</p>
+<p>A week later I was listening to <a href="https://atp.fm">ATP</a> and one of the sponsors was <a href="https://auraframes.co.uk">Aura</a>. They’re far, <em>far</em> from the cheapest digital photo frame out there, but it was a reasonable price for the Carver (their smallest unit, at 10.1”) and the hosts were waxing effusive about them, so I grabbed one as a Christmas gift.</p>
+<p>It’s really great! There’s a lot to like about it. The screen is bright and sharp with, at least to my eye, very good colour reproduction. 1280x800 on a 10” display doesn’t sound like all that much these days, but from a typical distance you might look at a picture frame, it’s plenty. The display is matte so you won’t get any glaring reflections, and there is very little off-axis colour shifting if you’re looking at it from different places in the room. It also automatically turns off when the room is dark, so when I turn out the lights to watch a movie it’s not distracting.</p>
+<p>One thing I didn’t realise until it was up and running is that it supports Apple’s Live Photos, so you get a little bit of animation as the photos scroll in. Nice touch!</p>
+<p>The setup experience was smooth and their app is pretty nice. If you buy it as a gift, you’re able to scan a QR code on the box and upload some initial photos as well as a welcome message, meaning as soon as it connects to Wi-Fi it’s already up and running. One minor gripe is that they evidently sold more of these things than they were expecting and their backend went down on Christmas Day, leaving us unable to add more photos. The frame itself kept working, at least.</p>
+<p>That brings me onto my only real concern about this device, which is its cloud-based nature. For one, because it involves uploading our photos to a third-party—though unless I want to manage a USB drive of files, I don’t really see how else it could work. An option to point it at my NAS would be awesome, but I completely understand why they wouldn’t implement that for the 0.01% of nerds that would use it. For two, Aura promises free unlimited storage forever, which feels ripe for eventual enshittification if things get tough for them—or if they ever sell to a less scrupulous company. But hey, if that ever happens maybe someone will jailbreak the thing.</p>
+<p>That aside, it’s a lovely thing to have in the house. I’ve turned off the notifications that tell me when my wife has added new photos, because it’s just such a delight to see new stuff pop up on it.</p>
 </section>
 </article>
 </main>
 
-    <footer class="footer-background pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
-      <nav class="flex items-center justify-around">
-        <a rel="me" href="https://mastodon.social/@mpbarlow" target="_blank" title="Toot me on Mastodon" class="group">
+    <footer>
+      <nav id="all-post-links"><a href="/posts/">All posts</a> &bull; <a href="/tags/">By tag</a></nav>
+      <nav id="social-links">
+        <a
+  rel="me"
+  href="https://mastodon.social/@mpbarlow"
+  target="_blank"
+  title="Toot me on Mastodon"
+  class="footer-icon-link"
+>
   <img
     src="/img/mastodon.png"
     srcset="/img/mastodon_2x.png 2x, /img/mastodon_3x.png 3x"
     alt="A pixel art elephant bearing the Mastodon logo"
-    class="h-[64px] w-[64px] group-hover:hidden"
+    class="footer-icon"
   />
   <img
     src="/img/mastodon_selected.png"
     srcset="/img/mastodon_selected_2x.png 2x, /img/mastodon_selected_3x.png 3x"
     alt="A pixel art elephant bearing the Mastodon logo"
-    class="hidden h-[64px] w-[64px] group-hover:inline"
+    class="footer-icon-selected"
   />
 </a>
- <a href="https://www.instagram.com/mattpbarlow" target="_blank" title="Dog pix" class="group">
+ <a href="https://www.instagram.com/mattpbarlow" target="_blank" title="Dog pix" class="footer-icon-link">
   <img
     src="/img/instagram.png"
     srcset="/img/instagram_2x.png 2x, /img/instagram_3x.png 3x"
     alt="A pixel art iPhone taking a photo of the Instagram logo"
-    class="h-[64px] w-[64px] group-hover:hidden"
+    class="footer-icon"
   />
   <img
     src="/img/instagram_selected.png"
     srcset="/img/instagram_selected_2x.png 2x, /img/instagram_selected_3x.png 3x"
     alt="A pixel art iPhone taking a photo of the Instagram logo"
-    class="hidden h-[64px] w-[64px] group-hover:inline"
+    class="footer-icon-selected"
   />
 </a>
- <a href="https://github.com/mpbarlow" target="_blank" title="Fork me on GitHub" class="group">
+ <a href="https://github.com/mpbarlow" target="_blank" title="Fork me on GitHub" class="footer-icon-link">
   <img
     src="/img/github.png"
     srcset="/img/github_2x.png 2x, /img/github_3x.png 3x"
     alt="A pixel art MacBook displaying the Git logo"
-    class="h-[64px] w-[64px] group-hover:hidden"
+    class="footer-icon"
   />
   <img
     src="/img/github_selected.png"
     srcset="/img/github_selected_2x.png 2x, /img/github_selected_3x.png 3x"
     alt="A pixel art MacBook displaying the Git logo"
-    class="hidden h-[64px] w-[64px] group-hover:inline"
+    class="footer-icon-selected"
   />
 </a>
 
       </nav>
-      <p class="mt-8">&copy; MMXXV Matt Barlow</p>
+      <p>&copy; MMXXV Matt Barlow</p>
     </footer>
   </body>
 </html>
