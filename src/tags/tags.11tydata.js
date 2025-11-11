@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   pagination: {
     data: "collections.posts",
     // Extract all the unique tags out of all the pages

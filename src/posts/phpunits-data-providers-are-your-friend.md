@@ -173,6 +173,6 @@ Some might say that conditionally asserting success or failure is a bad idea, as
 
 ## A note on model factories
 
-My examples above are based around Laravel, but if you try to use framework features like model factories in Data Providers, you're likely to run into somewhat cryptic errors about facade roots, because the Provider runs before the framework boots. Greg Mayes has an [excellent post on how to solve this](https://www.gregmayes.dev/posts/2024/02/03/using-laravel-model-factories-in-phpunit-data-providers/) by wrapping the data in closures to delay execution.
+My examples above are based around Laravel, but if you try to use framework features like model factories in Data Providers, you’re likely to run into somewhat cryptic errors about facade roots, because the Provider runs before the framework boots. Greg Mayes has an [excellent post on how to solve this](https://www.gregmayes.dev/posts/2024/02/03/using-laravel-model-factories-in-phpunit-data-providers/) by wrapping the data in closures to delay execution.
 
 And that’s really all there is to it! Data Providers aren’t a complex feature to use, but they can be a huge help in making tests with many permutations a lot more pleasant to write.

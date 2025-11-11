@@ -1,12 +1,13 @@
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const rss = require("@11ty/eleventy-plugin-rss");
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import pluginRss from "@11ty/eleventy-plugin-rss";
+import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat.js";
 
-const dayjs = require("dayjs");
-dayjs.extend(require("dayjs/plugin/advancedFormat"));
+dayjs.extend(advancedFormat);
 
-module.exports = function (config) {
+export default function (config) {
   config.addPlugin(syntaxHighlight);
-  config.addPlugin(rss);
+  config.addPlugin(pluginRss);
 
   // Needed for GitHub Pages hosting
   config.addPassthroughCopy("src/CNAME");
@@ -14,8 +15,7 @@ module.exports = function (config) {
   config.addPassthroughCopy("src/robots.txt");
   config.addPassthroughCopy("src/font");
   config.addPassthroughCopy("src/img");
-  config.addPassthroughCopy("src/css/prism-one-light.css");
-  config.addPassthroughCopy("src/css/prism-material-oceanic.css");
+  config.addPassthroughCopy("src/css");
 
   config.addGlobalData("currentYear", new Date().getFullYear());
   config.addGlobalData("siteUrl", "https://barlow.dev");
@@ -92,4 +92,4 @@ module.exports = function (config) {
     },
     markdownTemplateEngine: "njk",
   };
-};
+}

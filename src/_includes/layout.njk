@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-    <!-- Feels like these should be CSS properties but okay -->
-    <meta name="theme-color" content="rgb(243, 244, 246)" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="rgb(55, 65, 81)" media="(prefers-color-scheme: dark)" />
-
+    <meta name="generator" content="{{ eleventy.generator }}" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:site_name" content="barlow.dev" />
     <meta property="og:url" content="{{ siteUrl }}{{ page.url }}" />
@@ -18,9 +15,10 @@
     <meta name="description" content="{{ description }}" />
     {% endif %}
 
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/prism-one-light.css" />
-    <link rel="stylesheet" href="/css/prism-material-oceanic.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    {% for sheet in stylesheets %}
+    <link rel="stylesheet" href="/css/{{ sheet }}.css" />
+    {% endfor %}
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link rel="canonical" href="{{ siteUrl }}{{ page.url }}" />
     <link rel="alternate" type="application/atom+xml" href="{{ siteUrl }}/feed.xml" title="RSS Feed" />
@@ -28,27 +26,22 @@
     <title>{{ title }} - barlow.dev</title>
   </head>
 
-  <body
-    class="mx-auto grid min-h-dvh max-w-prose grid-cols-layout grid-rows-layout px-safe-offset-4 md:px-0 dark:bg-gray-800"
-  >
-    <nav class="mt-4 flex items-center justify-between dark:prose-invert">
-      <a href="/" title="Home">
-        <span class="font-mono text-indigo-500 dark:text-indigo-400">[barlow.dev ~] $</span>
-      </a>
-      <div class="space-x-2 sm:space-x-4">
-        <a href="/posts/" class="text-indigo-500 dark:text-indigo-400">Posts</a>
-        <a href="/tags/" class="text-indigo-500 dark:text-indigo-400">Tags</a>
-        <a href="/feed.xml" class="text-indigo-500 dark:text-indigo-400">RSS</a>
-      </div>
+  <body>
+    <nav id="header-links">
+      <a href="/">Home</a>
+      <a href="/posts/">Posts</a>
+      <a href="/tags/">Tags</a>
+      <a href="/feed.xml">RSS</a>
     </nav>
 
-    <main class="mb-12 mt-8">{{ content | safe }}</main>
+    <main>{{ content | safe }}</main>
 
-    <footer class="footer-background pb-8 text-center text-xs text-gray-700 dark:text-gray-400">
-      <nav class="flex items-center justify-around">
+    <footer>
+      <nav id="all-post-links"><a href="/posts/">All posts</a> &bull; <a href="/tags/">By tag</a></nav>
+      <nav id="social-links">
         {% include "mastodon_link.html" %} {% include "instagram_link.html" %} {% include "github_link.html" %}
       </nav>
-      <p class="mt-8">&copy; {{ currentYear | asRomanNumerals }} Matt Barlow</p>
+      <p>&copy; {{ currentYear | asRomanNumerals }} Matt Barlow</p>
     </footer>
   </body>
 </html>
