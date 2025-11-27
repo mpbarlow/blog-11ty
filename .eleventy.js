@@ -2,6 +2,8 @@ import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat.js";
+import FastGlob from "fast-glob";
+import { gallerify } from "./support/gallery.js";
 
 dayjs.extend(advancedFormat);
 
@@ -19,6 +21,8 @@ export default function (config) {
 
   config.addGlobalData("currentYear", new Date().getFullYear());
   config.addGlobalData("siteUrl", "https://barlow.dev");
+
+  config.addShortcode("gallerify", gallerify);
 
   // Filter to posts within the last year
   config.addFilter("recent", (posts) => posts.filter((post) => dayjs().diff(dayjs(post.data.date), "year") < 1));
@@ -47,8 +51,10 @@ export default function (config) {
   // Format a Y-m-d date into the format displayed on posts, e.g. "1st Jan 2024"
   config.addFilter("postDate", (ymd) => dayjs(ymd).format("Do MMM YYYY"));
 
-  // Strip out code from page content for the purposes of estimating reading time
-  config.addFilter("textOnly", (content) => content.replace(/<pre class=(.|\n)*?<\/pre>/gm, ""));
+  // Strip out code and alt text from page content for the purposes of estimating reading time
+  config.addFilter("textOnly", (content) =>
+    content.replace(/<pre class=(.|\n)*?<\/pre>/gm, "").replace(/alt=".+"/gm, ""),
+  );
 
   // Compute an estimated reading time assuming 225 words/min
   config.addFilter("readingTime", (wordCount) => `${Math.max(1, Math.floor(wordCount / 225))} minute`);
