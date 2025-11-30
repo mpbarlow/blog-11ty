@@ -59,7 +59,7 @@ export default function (config) {
   // Remove any content with the class feed-exclude, to be used with the RSS feed generation.
   // Adapted from https://gist.github.com/scottandrewlepera/0e7715090b1baf77dd0c072d803ad98b
   config.addFilter("feedExclude", (content) => {
-    if (!content.includes(".feed-exclude")) {
+    if (!content.includes("feed-exclude")) {
       return content;
     }
 
