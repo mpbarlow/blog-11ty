@@ -89,12 +89,12 @@ export function gallerify(glob) {
 
   return (
     `<figure class="gallery">` +
-    `<div class="thumbnails">${thumbnails}</div>` +
+    `<div class="thumbnails feed-exclude">${thumbnails}</div>` +
     `<a href="#_" class="lightbox" title="Close lightbox">` +
-    `<span>×</span>` +
+    `<span class="feed-exclude">×</span>` +
     `${images}` +
     `</a>` +
-    `<figcaption>Click thumbnails to enlarge</figcaption>` +
+    `<figcaption class="feed-exclude">Click thumbnails to enlarge</figcaption>` +
     `</figure>`
   );
 }

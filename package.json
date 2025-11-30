@@ -17,6 +17,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "dayjs": "^1.11.10",
     "fast-glob": "^3.3.3",
+    "jsdom": "^27.2.0",
     "prettier": "^3.2.5"
   }
 }
