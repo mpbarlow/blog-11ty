@@ -31,7 +31,7 @@
     <link href="{{ absolutePostUrl }}" />
     <updated>{{ post.date | dateToRfc3339 }}</updated>
     <id>{{ absolutePostUrl }}</id>
-    <content type="html">{{ post.content | feedExclude | renderTransforms(post.data.page, metadata.base) }}</content>
+    <content type="html">{{ post.content | renderTransforms(post.data.page, metadata.base) }}</content>
   </entry>
   {%- endfor %}
 </feed>

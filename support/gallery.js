@@ -73,28 +73,17 @@ export function gallerify(glob) {
 
   const thumbnails = files
     .map(
-      ({ thumbnail, altText }, index) =>
-        `<a href="#lightbox-image-${index}" title="Enlarge image">` +
+      ({ thumbnail, src, altText }) =>
+        `<a href="${src}" title="View full size image" target="_blank">` +
         `<img src="${thumbnail}" alt="${altText ?? defaultAltText}">` +
         `</a>`,
     )
     .join("");
 
-  const images = files
-    .map(
-      ({ src, altText }, index) =>
-        `<img id="lightbox-image-${index}" src="${src}" alt="${altText ?? defaultAltText}" loading="lazy">`,
-    )
-    .join("");
-
   return (
     `<figure class="gallery">` +
-    `<div class="thumbnails feed-exclude">${thumbnails}</div>` +
-    `<a href="#_" class="lightbox" title="Close lightbox">` +
-    `<span class="feed-exclude">×</span>` +
-    `${images}` +
-    `</a>` +
-    `<figcaption class="feed-exclude">Click thumbnails to enlarge</figcaption>` +
+    `<div class="thumbnails">${thumbnails}</div>` +
+    `<figcaption>Click thumbnails to view full image</figcaption>` +
     `</figure>`
   );
 }

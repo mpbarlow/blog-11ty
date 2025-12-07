@@ -1,7 +1,6 @@
 import advancedFormat from "dayjs/plugin/advancedFormat.js";
 import dayjs from "dayjs";
 import { gallerify } from "./support/gallery.js";
-import { JSDOM } from "jsdom";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
@@ -55,21 +54,6 @@ export default function (config) {
   config.addFilter("textOnly", (content) =>
     content.replace(/<pre class=(.|\n)*?<\/pre>/gm, "").replace(/alt=".+"/gm, ""),
   );
-
-  // Remove any content with the class feed-exclude, to be used with the RSS feed generation.
-  // Adapted from https://gist.github.com/scottandrewlepera/0e7715090b1baf77dd0c072d803ad98b
-  config.addFilter("feedExclude", (content) => {
-    if (!content.includes("feed-exclude")) {
-      return content;
-    }
-
-    const dom = new JSDOM(content);
-    const doc = dom.window.document;
-
-    doc.querySelectorAll(".feed-exclude").forEach((el) => el.remove());
-
-    return doc.body.innerHTML;
-  });
 
   // Compute an estimated reading time assuming 225 words/min
   config.addFilter("readingTime", (wordCount) => `${Math.max(1, Math.floor(wordCount / 225))} minute`);
