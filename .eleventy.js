@@ -1,4 +1,5 @@
 import advancedFormat from "dayjs/plugin/advancedFormat.js";
+import bands from "./src/bands.json" with { type: "json" };
 import dayjs from "dayjs";
 import { gallerify } from "./support/gallery.js";
 import pluginRss from "@11ty/eleventy-plugin-rss";
@@ -17,6 +18,14 @@ export default function (config) {
   config.addPassthroughCopy("src/font");
   config.addPassthroughCopy("src/img");
   config.addPassthroughCopy("src/css");
+
+  // Put the band date into the same format groupByYearMonth expects
+  config.addCollection("bands", () =>
+    bands.map((band) => ({
+      ...band,
+      data: { date: band.date },
+    })),
+  );
 
   config.addGlobalData("currentYear", new Date().getFullYear());
   config.addGlobalData("siteUrl", "https://barlow.dev");

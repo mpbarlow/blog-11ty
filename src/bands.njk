@@ -1,0 +1,26 @@
+---
+layout: layout.njk
+title: Bands
+---
+
+<header>
+  <h1>{{ title }}</h1>
+</header>
+
+<article>
+  <p>
+    Bands I've seen. At least, everything I can remember/find photos of. Some of the dates might not be quite right.
+  </p>
+
+  {% for group, bands in collections.bands | groupByYearMonth %}
+  <h3>{{ group }}</h3>
+  <ul>
+    {% for band in bands %}
+    <li>
+      {% if band.image %}<a href="/img/bands/{{ band.image }}" target="_blank">{{ band.name }}</a>{% else %}{{ band.name
+      }}{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+</article>
