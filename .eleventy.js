@@ -33,7 +33,7 @@ export default function (config) {
   config.addShortcode("gallerify", gallerify);
 
   // Filter to posts within the last year
-  config.addFilter("recent", (posts) => posts.filter((post) => dayjs().diff(dayjs(post.data.date), "year") < 1));
+  config.addFilter("recent", (posts) => posts.filter((post) => dayjs().diff(dayjs(post.data.date), "year") < 2));
 
   // Given an array of posts, group by their publish date in the form e.g. "January 2024"
   config.addFilter("groupByYearMonth", (posts) =>
