@@ -4,11 +4,21 @@
   <subtitle>A blog about programming and whatever else irks me enough to write about.</subtitle>
   <link href="https://barlow.dev/feed.xml" rel="self" />
   <link href="https://barlow.dev/" />
-  <updated>2026-06-08T22:15:35Z</updated>
+  <updated>2026-07-05T18:58:35Z</updated>
   <id>https://barlow.dev/</id>
   <author>
     <name>Matt Barlow</name>
   </author>
+  <entry>
+    <title>Ratchet &amp; Clank: Rift Apart</title>
+    <link href="https://barlow.dev/posts/ratchet-clank-rift-apart/" />
+    <updated>2026-07-05T18:58:35Z</updated>
+    <id>https://barlow.dev/posts/ratchet-clank-rift-apart/</id>
+    <content type="html">&lt;p&gt;This game was a lot of fun. I was a huge fan of the original—which I still think had a certain vibe none of the sequels matched—as a kid, played the other PS2 and PSP instalments, but then dropped off in the PS3 era. I did play the PS4 reboot/remake which was pretty good but didn’t displace the original for me.&lt;/p&gt;
+&lt;p&gt;It’s quite nice to see they haven’t really changed the formula after all these years, because it works, it’s fun, and there’s a lot fewer of this type of game today than there was back in 2002. There’s a wide range of entertaining weapons that are rewarding to upgrade, frenetic combat that has you constantly swapping between those weapons to avoid being overwhelmed, and lots of collectibles to seek out. (The original RYNO will forever be the coolest though.)&lt;/p&gt;
+&lt;p&gt;The technical showcase aspect of Rift Apart is very impressive. It’s visually gorgeous and, while the loading-screen-less presentation doesn’t really add much to the game, it keeps things fast-paced and allows for some particularly bombastic set pieces.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>WWDC 2026</title>
     <link href="https://barlow.dev/posts/wwdc-2026/" />
